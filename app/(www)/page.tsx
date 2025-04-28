@@ -20,8 +20,8 @@ export default function Page() {
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl">
             The open source registry for 
-            <span className="inline-flex items-center gap-1 font-mono text-accent-foreground bg-accent/40 px-1 rounded align-middle">
-              <Logo name="shadcn" className="w-5 h-5" />
+            <span className="px-2 font-mono text-accent-foreground bg-accent/40">
+              <Logo name="shadcn" className="w-5 h-5 inline-flex items-center gap-1" />
               shadcn/ui
             </span> 
             components &mdash; built for private and premium projects.
@@ -65,21 +65,21 @@ export default function Page() {
         <h2 className="text-2xl font-semibold mb-12 text-center">How it works</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-y-0 gap-x-8 w-full max-w-5xl">
           <div className="relative bg-card/70 rounded-xl py-8 px-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5">
-            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-mono text-muted-foreground drop-shadow-lg select-none">1</span>
+            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-3xl font-mono text-muted-foreground drop-shadow-lg select-none bg-background rounded-md py-1 px-4 border border-border">1</span>
             <h3 className="font-semibold mb-2 mt-6 text-lg bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
               Publish your components
             </h3>
             <p className="text-sm text-muted-foreground text-center">Download this template or copy the components you need.</p>
           </div>
           <div className="relative bg-card/70 rounded-xl py-8 px-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5">
-            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-mono text-muted-foreground drop-shadow-lg select-none">2</span>
+            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-3xl font-mono text-muted-foreground drop-shadow-lg select-none bg-background rounded-md py-1 px-4 border border-border">2</span>
             <h3 className="font-semibold mb-2 mt-6 text-lg bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
               Protect with License Keys
             </h3>
             <p className="text-sm text-muted-foreground text-center">Integrate <a href='https://docs.polar.sh/features/benefits/license-keys' target='_blank' rel='noopener noreferrer' className='underline hover:text-primary'>Polar.sh</a> to issue and validate licenses automatically.</p>
           </div>
           <div className="relative bg-card/70 rounded-xl py-8 px-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5">
-            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-mono text-muted-foreground drop-shadow-lg select-none">3</span>
+            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-mono text-muted-foreground drop-shadow-lg select-none bg-background rounded-md py-1 px-4">3</span>
             <h3 className="font-semibold mb-2 mt-6 text-lg bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
               Install via CLI
             </h3>
