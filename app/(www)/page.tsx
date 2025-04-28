@@ -145,8 +145,8 @@ export default function Page() {
                 This component is protected by a license key. When you try to install it:
               </p>
               <ol className="list-decimal list-inside space-y-2 text-xs md:text-sm text-muted-foreground mt-3">
-                <li className="leading-relaxed">You&apos;ll be redirected to a license validation form</li>
-                <li className="leading-relaxed">Enter your valid license key from Polar</li>
+                <li className="leading-relaxed">Open the component in your browser: <a href="https://registry-template-zeta.vercel.app/logo" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">https://registry-template-zeta.vercel.app/logo</a></li>
+                <li className="leading-relaxed">Enter the valid license key is displayed</li>
                 <li className="leading-relaxed">Upon successful validation, you&apos;ll receive an access token</li>
                 <li className="leading-relaxed">Use this token to install the component via the CLI</li>
               </ol>
@@ -231,6 +231,18 @@ export default function Page() {
               <AccordionTrigger>How do I get an access key?</AccordionTrigger>
               <AccordionContent>
                 Access keys are managed via Polar.sh. Check their <a href="https://docs.polar.sh/features/benefits/license-keys" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">documentation</a> for details.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="q7">
+              <AccordionTrigger>Is Zeta associated with shadcn/ui or Polar.sh?</AccordionTrigger>
+              <AccordionContent>
+                No, Zeta is an independent project created by <a href="https://x.com/rbadillap" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Ronny Badilla</a>. It leverages Polar.sh for license key management. More integrations are planned in the future.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="q8">
+              <AccordionTrigger>Why is this project called Zeta?</AccordionTrigger>
+              <AccordionContent>
+                Zeta is the eighth letter of the Greek... nah! it was the name randomly chosen by Vercel when I created the project :)
               </AccordionContent>
             </AccordionItem>
           </Accordion>

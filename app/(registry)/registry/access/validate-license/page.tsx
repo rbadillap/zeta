@@ -6,7 +6,7 @@ import { ValidateLicenseForm } from "@/components/validate-license-form"
 import { toast } from "sonner"
 import { TerminalCommandCopy } from "@/components/terminal-command-copy"
 
-export default function DemoPage() {
+export default function ValidateLicensePage() {
   const [isLicenseValid, setIsLicenseValid] = React.useState(false)
   const [token, setToken] = React.useState<string | null>(null)
 
@@ -42,7 +42,7 @@ export default function DemoPage() {
         ) : (
           <TerminalCommandCopy 
             className="w-full max-w-md"
-            command={`pnpm dlx shadcn add https://zeta.vercel.app/button?token=${token}`}
+            command={`pnpm dlx shadcn add https://registry-template-zeta.vercel.app/logo?token=${token}`}
           />
         )}
       </section>

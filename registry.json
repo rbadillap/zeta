@@ -4,15 +4,15 @@
   "homepage": "https://acme.com",
   "items": [
     {
-      "name": "hello-world",
+      "name": "logo",
       "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
-      "registryDependencies": ["button"],
+      "title": "Logo",
+      "description": "The Zeta logo component",
       "files": [
         {
-          "path": "registry/new-york/blocks/hello-world/hello-world.tsx",
-          "type": "registry:component"
+          "path": "registry/new-york/logos/zeta.tsx",
+          "type": "registry:component",
+          "target": "components/logos/zeta.tsx"
         }
       ]
     },

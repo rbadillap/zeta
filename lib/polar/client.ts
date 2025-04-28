@@ -1,6 +1,7 @@
 import { Polar } from "@polar-sh/sdk"
 
 const polar = new Polar({
+  server: process.env.POLAR_IS_SANDBOX === 'true' ? 'sandbox' : 'production',
   accessToken: process.env.POLAR_ACCESS_TOKEN ?? "",
 })
 

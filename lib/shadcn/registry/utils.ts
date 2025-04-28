@@ -1,3 +1,4 @@
+import 'server-only'
 import { SignJWT, jwtVerify } from 'jose'
 import { nanoid } from 'nanoid'
 
@@ -6,6 +7,10 @@ const key = new TextEncoder().encode(
 )
 
 export async function generateToken(): Promise<string> {
+  if (!process.env.REGISTRY_TOKEN_SECRET) {
+    throw new Error("REGISTRY_TOKEN_SECRET environment variable is required.")
+  }
+
   return await new SignJWT({})
     .setProtectedHeader({ alg: 'HS256' })
     .setJti(nanoid())
