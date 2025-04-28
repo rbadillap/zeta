@@ -12,7 +12,7 @@ export default function ValidateLicensePage() {
 
   async function handleSubmit(data: { licenseKey: string }) {
     try {
-      const res = await fetch("/api/validate-license", {
+      const res = await fetch("/registry/api/validate-license", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ licenseKey: data.licenseKey })

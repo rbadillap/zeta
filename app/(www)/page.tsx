@@ -8,6 +8,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 
 export default function Page() {
+  const logoUrl = 'https://registry-template-zeta.vercel.app/registry/logo'
+
   return (
     <main className="min-h-svh flex flex-col bg-background text-foreground">
       {/* Hero */}
@@ -91,80 +93,100 @@ export default function Page() {
       </section>
 
       {/* Demo */}
-      <section className="flex flex-col items-center justify-center px-4 my-16 bg-card/30">
-        <h2 className="text-2xl font-semibold mb-6 md:mb-8 text-center">Try it yourself</h2>
-        <div className="w-full max-w-3xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          <div className="flex flex-col items-center gap-4 md:gap-6">
-            <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center bg-background rounded-xl border border-border shadow-lg">
-              <Logo name="zeta" className="w-12 h-12 md:w-16 md:h-16 text-foreground" />
-              <div className="absolute -top-2 -right-2">
-                <div className="px-2 py-1 text-[10px] md:text-xs font-mono bg-primary text-primary-foreground rounded-md shadow-lg">
-                  Logo
+      <section className="flex flex-col items-center justify-center px-4 py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent">
+        <div className="w-full max-w-3xl mx-auto">
+          <h2 className="text-2xl font-semibold mb-8 text-center">Try it yourself</h2>
+          
+          {/* Component Preview Card */}
+          <div className="bg-card border border-border rounded-lg p-6 mb-8">
+            <div className="flex flex-col items-center gap-6">
+              {/* Logo Preview */}
+              <div className="relative">
+                <div className="w-20 h-20 flex items-center justify-center bg-background rounded-xl border border-border shadow-lg">
+                  <Logo name="zeta" className="w-10 h-10 text-foreground" />
+                </div>
+                <div className="absolute -top-2 -right-2">
+                  <div className="px-2 py-1 text-[10px] font-mono bg-primary text-primary-foreground rounded-md shadow-lg">
+                    Logo
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="text-center w-full">
-              <p className="text-xs md:text-sm text-muted-foreground mb-2">Install this component from our registry:</p>
-              <div className="relative">
-                <pre className="bg-card border border-border rounded-lg p-3 md:p-4 font-mono text-sm overflow-x-auto whitespace-pre-wrap break-all">
-                  <code>npx shadcn@latest add https://registry-template-zeta.vercel.app/logo</code>
-                </pre>
-                <div className="absolute top-0 right-0 mt-1.5 mr-1.5 md:mt-2 md:mr-2">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-7 w-7 md:h-8 md:w-8"
-                    onClick={() => {
-                      navigator.clipboard.writeText('npx shadcn@latest add https://registry-template-zeta.vercel.app/logo')
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
+
+              {/* Installation Command */}
+              <div className="w-full space-y-2">
+                <p className="text-sm text-center text-muted-foreground">Install this component from our registry:</p>
+                <div className="relative">
+                  <pre className="bg-background border border-border rounded-lg p-3 font-mono text-xs sm:text-sm overflow-x-auto">
+                    <code>npx shadcn add {logoUrl}</code>
+                  </pre>
+                  <div className="absolute top-0 right-0 mt-1.5 mr-1.5">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7"
+                      onClick={() => {
+                        navigator.clipboard.writeText(`npx shadcn@latest add ${logoUrl}`)
+                      }}
                     >
-                      <rect width="8" height="8" x="8" y="8" rx="2" />
-                      <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                    </svg>
-                  </Button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <rect width="8" height="8" x="8" y="8" rx="2" />
+                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
+                      </svg>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="space-y-4 px-2 md:px-0">
-            <h3 className="text-base md:text-lg font-semibold">Protected Component</h3>
+
+          {/* Instructions Card */}
+          <div className="bg-card border border-border rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4">Protected Component</h3>
             <div className="prose prose-sm dark:prose-invert">
-              <p className="text-sm text-muted-foreground">
-                This component is protected by a license key. When you try to install it:
+              <p className="text-sm text-muted-foreground mb-4">
+                This component is protected by a license key. Follow these steps to install:
               </p>
-              <ol className="list-decimal list-inside space-y-2 text-xs md:text-sm text-muted-foreground mt-3">
-                <li className="leading-relaxed">Open the component in your browser: <a href="https://registry-template-zeta.vercel.app/logo" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">https://registry-template-zeta.vercel.app/logo</a></li>
-                <li className="leading-relaxed">Enter the valid license key is displayed</li>
+              <ol className="list-decimal list-inside space-y-3 text-sm text-muted-foreground">
+                <li className="leading-relaxed">
+                  Open the component in your browser:
+                  <a 
+                    href={logoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block mt-1 text-xs sm:text-sm font-mono text-primary hover:underline truncate max-w-full pl-5"
+                  >
+                    {logoUrl}
+                  </a>
+                </li>
+                <li className="leading-relaxed">Enter the valid license key when prompted</li>
                 <li className="leading-relaxed">Upon successful validation, you&apos;ll receive an access token</li>
                 <li className="leading-relaxed">Use this token to install the component via the CLI</li>
               </ol>
-              <div className="mt-4">
+              <div className="mt-6">
                 <Button
                   asChild
-                  variant="outline"
-                  size="sm"
-                  className="w-full md:w-auto"
+                  variant="ghost"
+                  size="default"
                 >
                   <a
-                    href="https://registry-template-zeta.vercel.app/logo"
+                    href={logoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 text-xs md:text-sm"
+                    className="flex items-center justify-center gap-2"
                   >
-                    Try to access the component
-                    <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                    Access Component
+                    <ArrowRight className="w-4 h-4" />
                   </a>
                 </Button>
               </div>
