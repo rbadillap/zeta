@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   async redirects() {
     return [
-      { source: '/logo', destination: '/demo/logo', permanent: true },
+      { source: '/logo', destination: '/example/logo', permanent: true },
     ]
   },
 };
