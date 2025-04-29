@@ -8,8 +8,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 
 export default function Page() {
-  const logoUrl = 'https://registry-template-zeta.vercel.app/registry/logo'
-
+  const logoUrl = 'https://registry-template-zeta.vercel.app/example/logo'
+  
   return (
     <main className="min-h-svh flex flex-col bg-background text-foreground">
       {/* Hero */}
