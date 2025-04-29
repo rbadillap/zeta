@@ -19,7 +19,7 @@ export async function GET(
       if (request.headers.get("accept")?.includes("text/html")) {
         const returnUrl = encodeURIComponent(url.pathname)
         return NextResponse.redirect(
-          new URL(`/registry/access/validate-license?returnUrl=${returnUrl}`, request.url)
+          new URL(`/example/access/validate-license?returnUrl=${returnUrl}`, request.url)
         )
       }
       
