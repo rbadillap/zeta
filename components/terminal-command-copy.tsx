@@ -12,7 +12,7 @@ import {
   CardContent,
 } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
-import { Copy } from "lucide-react"
+import { Check, Copy } from "lucide-react"
 
 interface TerminalCommandCopyProps {
   logo?: React.ReactNode
@@ -23,9 +23,9 @@ interface TerminalCommandCopyProps {
 export function TerminalCommandCopy({
   logo = <Logo name="shadcn" className="w-8 h-8 rounded opacity-80 group-hover:opacity-100 transition" />, 
   className, 
-  command = "pnpm dlx shadcn add https://zeta.vercel.app/button?token=<random>"
+  command = "https://registry-template-zeta.vercel.app/registry/logo?token=<token>"
 }: TerminalCommandCopyProps) {
-  const [, setIsCopied] = React.useState(false)
+  const [isCopied, setIsCopied] = React.useState(false)
 
   async function handleCopy() {
     try {
@@ -63,7 +63,7 @@ export function TerminalCommandCopy({
               onClick={handleCopy}
               aria-label="Copy command"
             >
-              <Copy className="size-4" />
+              {isCopied ? <Check className="size-4" /> : <Copy className="size-4" />}
             </Button>
           </div>
         </CardContent>
