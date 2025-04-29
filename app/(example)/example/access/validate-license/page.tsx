@@ -79,7 +79,7 @@ export default function ValidateLicensePage() {
         ) : (
           <TerminalCommandCopy 
             className="w-full max-w-md"
-            command={`pnpm dlx shadcn add "https://registry-template-zeta.vercel.app/registry/logo?token=${token}"`}
+            command={`npx shadcn add "https://registry-template-zeta.vercel.app/registry/logo?token=${token}"`}
           />
         )}
       </section>
