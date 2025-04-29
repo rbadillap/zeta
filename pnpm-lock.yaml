@@ -68,6 +68,9 @@ importers:
       tailwind-merge:
         specifier: ^3.2.0
         version: 3.2.0
+      ts-morph:
+        specifier: 18.0.0
+        version: 18.0.0
       zod:
         specifier: ^3.24.3
         version: 3.24.3
