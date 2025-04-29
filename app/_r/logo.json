@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo",
+  "type": "registry:component",
+  "title": "Logo",
+  "description": "The Zeta logo component",
+  "files": [
+    {
+      "path": "registry/new-york/logos/zeta.tsx",
+      "content": "export default function Logo(props: React.SVGProps<SVGSVGElement>) {\n  return (\n    <svg width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" {...props}>\n      <path d=\"M20.6673 16.5C20.6673 18.8012 18.8018 20.6666 16.5007 20.6666C14.1995 20.6666 12.334 18.8012 12.334 16.5C12.334 14.1988 14.1995 12.3333 16.5007 12.3333C18.8018 12.3333 20.6673 14.1988 20.6673 16.5Z\" fill=\"currentColor\"/>\n      <path d=\"M20.6673 31.5C20.6673 33.8012 18.8018 35.6666 16.5007 35.6666C14.1995 35.6666 12.334 33.8012 12.334 31.5C12.334 29.1988 14.1995 27.3333 16.5007 27.3333C18.8018 27.3333 20.6673 29.1988 20.6673 31.5Z\" fill=\"currentColor\"/>\n      <path d=\"M35.6673 16.5C35.6673 18.8012 33.8018 20.6666 31.5007 20.6666C29.1995 20.6666 27.334 18.8012 27.334 16.5C27.334 14.1988 29.1995 12.3333 31.5007 12.3333C33.8018 12.3333 35.6673 14.1988 35.6673 16.5Z\" fill=\"currentColor\"/>\n      <path d=\"M35.6673 31.5C35.6673 33.8012 33.8018 35.6666 31.5007 35.6666C29.1995 35.6666 27.334 33.8012 27.334 31.5C27.334 29.1988 29.1995 27.3333 31.5007 27.3333C33.8018 27.3333 35.6673 29.1988 35.6673 31.5Z\" fill=\"currentColor\"/>\n    </svg>\n  )\n}",
+      "type": "registry:component",
+      "target": "components/logos/zeta.tsx"
+    }
+  ]
+}
