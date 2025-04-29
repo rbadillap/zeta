@@ -4,7 +4,58 @@ import { promises as fs } from "fs"
 import { registryItemSchema } from "shadcn/registry"
 import { verifyToken } from "@/lib/shadcn/registry/utils"
 
-// This route shows an example for serving a component using a route handler.
+// Define types for our registry structure
+interface RegistryFile {
+  path: string
+  type: string
+  target: string
+  content?: string
+}
+
+interface RegistryItem {
+  name: string
+  type: string
+  title: string
+  description: string
+  files: RegistryFile[]
+}
+
+interface RegistryContent {
+  [key: string]: RegistryItem
+}
+
+// Pre-build the registry content at build time
+const registryContent: RegistryContent = {}
+
+// This function runs at build time
+async function buildRegistryContent() {
+  try {
+    const registryPath = path.join(process.cwd(), 'registry.json')
+    const registryData = JSON.parse(await fs.readFile(registryPath, 'utf8'))
+    
+    // Build content for each component
+    for (const item of registryData.items) {
+      const registryItem = registryItemSchema.parse(item) as RegistryItem
+      
+      if (registryItem.files?.length) {
+        const filesWithContent = await Promise.all(
+          registryItem.files.map(async (file) => {
+            const filePath = path.join(process.cwd(), file.path)
+            const content = await fs.readFile(filePath, "utf8")
+            return { ...file, content }
+          })
+        )
+        registryContent[item.name] = { ...registryItem, files: filesWithContent }
+      }
+    }
+  } catch (error) {
+    console.error("Error building registry content:", error)
+  }
+}
+
+// Build the registry content at build time
+buildRegistryContent()
+
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ name: string }> }
@@ -41,14 +92,10 @@ export async function GET(
 
     const { name } = await params
 
-    // Cache the registry import
-    const registryData = await import("@/registry.json")
-    const registry = registryData.default
+    // Get pre-built content
+    const component = registryContent[name]
 
-    // Find the component from the registry.
-    const component = registry.items.find((c) => c.name === name)
-
-    // If the component is not found, return a 404 error.
+    // If the component is not found, return a 404 error
     if (!component) {
       return NextResponse.json(
         { error: "Component not found" },
@@ -56,35 +103,8 @@ export async function GET(
       )
     }
 
-    // Validate before file operations.
-    const registryItem = registryItemSchema.parse(component)
-
-    // If the component has no files, return a 400 error.
-    if (!registryItem.files?.length) {
-      return NextResponse.json(
-        { error: "Component has no files" },
-        { status: 400 }
-      )
-    }
-
-    // Read all files in parallel from the protected public directory
-    const filesWithContent = await Promise.all(
-      registryItem.files.map(async (file) => {
-        // Map the registry path to the protected public directory
-        const filePath = path.join(process.cwd(), 'public', file.path)
-        
-        try {
-          const content = await fs.readFile(filePath, "utf8")
-          return { ...file, content }
-        } catch (error) {
-          console.error(`Error reading file ${filePath}:`, error)
-          throw new Error(`Component file not found: ${file.path}`)
-        }
-      })
-    )
-
-    // Return the component with the files.
-    return NextResponse.json({ ...registryItem, files: filesWithContent })
+    // Return the pre-built component data
+    return NextResponse.json(component)
   } catch (error) {
     console.error("Error processing component request:", error)
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 })
