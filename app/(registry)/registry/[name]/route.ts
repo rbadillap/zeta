@@ -67,12 +67,19 @@ export async function GET(
       )
     }
 
-    // Read all files in parallel.
+    // Read all files in parallel from the protected public directory
     const filesWithContent = await Promise.all(
       registryItem.files.map(async (file) => {
-        const filePath = path.join(process.cwd(), file.path)
-        const content = await fs.readFile(filePath, "utf8")
-        return { ...file, content }
+        // Map the registry path to the protected public directory
+        const filePath = path.join(process.cwd(), 'public', file.path)
+        
+        try {
+          const content = await fs.readFile(filePath, "utf8")
+          return { ...file, content }
+        } catch (error) {
+          console.error(`Error reading file ${filePath}:`, error)
+          throw new Error(`Component file not found: ${file.path}`)
+        }
       })
     )
 
