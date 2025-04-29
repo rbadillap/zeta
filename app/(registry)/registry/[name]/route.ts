@@ -93,6 +93,7 @@ export async function GET(
     const { name } = await params
 
     // Get pre-built content
+    console.log({ registryContent: JSON.stringify(registryContent, null, 2) })
     const component = registryContent[name]
 
     // If the component is not found, return a 404 error
