@@ -6,7 +6,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import Logo from "@/components/logos"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
-
+import { Logo as Alpine } from "@/components/logo"
 export default function Page() {
   const logoUrl = 'https://registry-template-zeta.vercel.app/logo'
   
@@ -23,12 +23,15 @@ export default function Page() {
             zeta
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl">
-            The open source registry for 
+            An open source registry for 
             <span className="px-2 font-mono text-accent-foreground bg-accent/40">
               <Logo name="shadcn" className="w-5 h-5 inline-flex items-center gap-1" />
               shadcn/ui
             </span> 
             components &mdash; built for private and premium projects.
+          </p>
+          <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl flex items-center gap-4">
+            Compatible with <a href="https://alpine-registry.vercel.app" target="_blank" rel="noopener noreferrer" className="underline"><Alpine /></a>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
             {/* <Button
