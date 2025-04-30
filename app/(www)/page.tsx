@@ -31,7 +31,7 @@ export default function Page() {
             components &mdash; built for private and premium projects.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
-            <Button
+            {/* <Button
               asChild
               size="lg"
               className="px-8 py-4 text-base font-semibold bg-primary text-primary-foreground border border-primary/70 shadow-inner shadow-primary/10 hover:bg-primary/90 focus:ring-2 focus:ring-primary/40 focus:outline-none w-full sm:w-auto"
@@ -39,7 +39,7 @@ export default function Page() {
               <Link href="/docs" className="flex items-center gap-2">
                 Get Started <ArrowRight className="w-4 h-4" />
               </Link>
-            </Button>
+            </Button> */}
             <Button
               asChild
               size="lg"
