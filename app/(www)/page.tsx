@@ -1,5 +1,3 @@
-"use client"
-
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
@@ -7,6 +5,14 @@ import Logo from "@/components/logos"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 import { Logo as Alpine } from "@/components/logo"
+import { Separator } from "@/components/ui/separator"
+import { DemoSection } from "@/components/demo-section"
+import { Badge } from "@/components/ui/badge"
+import { PlusIcon, MailIcon } from "lucide-react"
+import { RegistryDemo } from "@/components/registry-demo"
+// import { AddCommand } from "@/components/add-command"
+// import { OpenInV0 } from "@/components/open-in-v0"
+
 export default function Page() {
   const logoUrl = 'https://registry-template-zeta.vercel.app/logo'
   
@@ -30,7 +36,7 @@ export default function Page() {
             </span> 
             components &mdash; built for private and premium projects.
           </p>
-          <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl flex items-center gap-4">
+          <p className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl flex items-center gap-4">
             Compatible with <a href="https://alpine-registry.vercel.app" target="_blank" rel="noopener noreferrer" className="underline"><Alpine /></a>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
@@ -57,168 +63,96 @@ export default function Page() {
         </div>
       </section>
 
-      {/* What is Zeta? */}
-      <section className="flex flex-col items-center justify-center text-center px-4 py-20">
-        <div className="max-w-2xl mx-auto flex flex-col gap-6">
-          <h2 className="text-3xl font-bold mb-2">What is Zeta?</h2>
-          <p className="text-lg md:text-xl text-muted-foreground">
-            Zeta is a registry for shadcn/ui that enables secure distribution of private or premium components, integrating advanced licensing and protection. Perfect for teams and creators who want to share components without worrying about unauthorized access.
-          </p>
+      {/* Integrations */}
+      <section className="flex flex-col items-center justify-center px-4 mt-32">
+        <h2 className="text-2xl font-semibold mb-8 text-center">Integrations</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+          <a href="https://docs.polar.sh/features/benefits/license-keys" target="_blank" rel="noopener noreferrer" className="group h-full">
+            <div className="relative h-full bg-card/70 rounded-xl p-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5 hover:border-primary/40 transition-colors duration-300">
+              <Logo name="polar" className="w-12 h-12 rounded mb-4 opacity-80 group-hover:opacity-100 transition" />
+              <h3 className="font-semibold text-lg mb-2">Polar.sh</h3>
+              <Badge variant="default" className="mb-3">Available</Badge>
+              <Badge variant="secondary" className="mb-3">License Keys</Badge>
+              <p className="text-sm text-muted-foreground text-center">Secure distribution of private components with license key validation</p>
+            </div>
+          </a>
+          <div className="opacity-60 h-full">
+            <div className="relative h-full bg-card/70 rounded-xl p-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5">
+              <Logo name="betterauth" className="w-12 h-12 rounded mb-4" />
+              <h3 className="font-semibold text-lg mb-2">Better Auth</h3>
+              <Badge variant="outline" className="mb-3">Coming Soon</Badge>
+              <Badge variant="secondary" className="mb-3">Authentication</Badge>
+              <p className="text-sm text-muted-foreground text-center">Secure authentication with email/password, social login, and more</p>
+            </div>
+          </div>
+          <div className="h-full">
+            <div className="relative h-full bg-gradient-to-br from-muted/40 to-background rounded-xl p-6 flex flex-col items-center border border-dashed border-muted-foreground/20 shadow-lg shadow-primary/5">
+              <div className="w-12 h-12 rounded mb-4 flex items-center justify-center bg-muted/30">
+                <PlusIcon className="w-6 h-6 text-muted-foreground" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Missing an Integration?</h3>
+              <p className="text-sm text-muted-foreground text-center mb-6">Have a service that could enhance Zeta?</p>
+              <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                <a
+                  href="https://github.com/rbadillap/zeta/discussions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                >
+                  <Logo name="github" className="w-4 h-4" />
+                  Start a Discussion
+                </a>
+                <span className="hidden sm:inline text-muted-foreground">or</span>
+                <a
+                  href="mailto:info@rbadillap.dev"
+                  className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                >
+                  <MailIcon className="w-4 h-4" />
+                  Contact Me
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="flex flex-col items-center justify-center px-4 mb-16">
+      <section className="flex flex-col items-center justify-center px-4 mt-32">
         <h2 className="text-2xl font-semibold mb-12 text-center">How it works</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-y-0 gap-x-8 w-full max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
           <div className="relative bg-card/70 rounded-xl py-8 px-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5">
             <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-3xl font-mono text-muted-foreground drop-shadow-lg select-none bg-background rounded-md py-1 px-4 border border-border">1</span>
             <h3 className="font-semibold mb-2 mt-6 text-lg bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
-              Publish your components
+              Get Components
             </h3>
-            <p className="text-sm text-muted-foreground text-center">Download this template or copy the components you need.</p>
+            <p className="text-sm text-muted-foreground text-center">Clone this registry or copy the components you need from our collection.</p>
           </div>
           <div className="relative bg-card/70 rounded-xl py-8 px-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5">
             <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-3xl font-mono text-muted-foreground drop-shadow-lg select-none bg-background rounded-md py-1 px-4 border border-border">2</span>
             <h3 className="font-semibold mb-2 mt-6 text-lg bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
-              Protect with License Keys
+              Configure Components
             </h3>
-            <p className="text-sm text-muted-foreground text-center">Integrate <a href='https://docs.polar.sh/features/benefits/license-keys' target='_blank' rel='noopener noreferrer' className='underline hover:text-primary'>Polar.sh</a> to issue and validate licenses automatically.</p>
+            <p className="text-sm text-muted-foreground text-center">Add your components to registry.json and use /registry/[name] to reference them.</p>
           </div>
           <div className="relative bg-card/70 rounded-xl py-8 px-6 flex flex-col items-center border border-border shadow-lg shadow-primary/5">
             <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-3xl font-mono text-muted-foreground drop-shadow-lg select-none bg-background rounded-md py-1 px-4 border border-border">3</span>
             <h3 className="font-semibold mb-2 mt-6 text-lg bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
-              Install via CLI
+              Generate Token
             </h3>
-            <p className="text-sm text-muted-foreground text-center mb-2">Users install components using the shadcn CLI with their access key:</p>
+            <p className="text-sm text-muted-foreground text-center">Click any component URL to access the login page where users can enter their license key.</p>
           </div>
         </div>
       </section>
+
 
       {/* Demo */}
-      <section className="flex flex-col items-center justify-center px-4 py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent">
-        <div className="w-full max-w-3xl mx-auto">
-          <h2 className="text-2xl font-semibold mb-8 text-center">Try it yourself</h2>
-          
-          {/* Component Preview Card */}
-          <div className="bg-card border border-border rounded-lg p-6 mb-8">
-            <div className="flex flex-col items-center gap-6">
-              {/* Logo Preview */}
-              <div className="relative">
-                <div className="w-20 h-20 flex items-center justify-center bg-background rounded-xl border border-border shadow-lg">
-                  <Logo name="zeta" className="w-10 h-10 text-foreground" />
-                </div>
-                <div className="absolute -top-2 -right-2">
-                  <div className="px-2 py-1 text-[10px] font-mono bg-primary text-primary-foreground rounded-md shadow-lg">
-                    Logo
-                  </div>
-                </div>
-              </div>
-
-              {/* Installation Command */}
-              <div className="w-full space-y-2">
-                <p className="text-sm text-center text-muted-foreground">Install this component from our registry:</p>
-                <div className="relative">
-                  <pre className="bg-background border border-border rounded-lg p-3 font-mono text-xs sm:text-sm overflow-x-auto">
-                    <code>npx shadcn add {logoUrl}</code>
-                  </pre>
-                  <div className="absolute top-0 right-0 mt-1.5 mr-1.5">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
-                      onClick={() => {
-                        navigator.clipboard.writeText(`npx shadcn@latest add ${logoUrl}`)
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <rect width="8" height="8" x="8" y="8" rx="2" />
-                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                      </svg>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Instructions Card */}
-          <div className="bg-card border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-4">Protected Component</h3>
-            <div className="prose prose-sm dark:prose-invert">
-              <p className="text-sm text-muted-foreground mb-4">
-                This component is protected by a license key. Follow these steps to install:
-              </p>
-              <ol className="list-decimal list-inside space-y-3 text-sm text-muted-foreground">
-                <li className="leading-relaxed">
-                  Open the component in your browser:
-                  <a 
-                    href={logoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block mt-1 text-xs sm:text-sm font-mono text-primary hover:underline truncate max-w-full pl-5"
-                  >
-                    {logoUrl}
-                  </a>
-                </li>
-                <li className="leading-relaxed">Enter the valid license key when prompted</li>
-                <li className="leading-relaxed">Upon successful validation, you&apos;ll receive an access token</li>
-                <li className="leading-relaxed">Use this token to install the component via the CLI</li>
-              </ol>
-              <div className="mt-6">
-                <Button
-                  asChild
-                  variant="ghost"
-                  size="default"
-                >
-                  <a
-                    href={logoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
-                  >
-                    Access Component
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations */}
-      <section className="flex flex-col items-center justify-center px-4 my-36">
-        <h2 className="text-2xl font-semibold mb-8 text-center">Integrations</h2>
-        <div className="flex flex-wrap gap-8 items-center justify-center">
-          <a href="https://docs.polar.sh/features/benefits/license-keys" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
-            <Logo name="polar" className="w-10 h-10 rounded mb-2 opacity-80 group-hover:opacity-100 transition" />
-            <span className="text-xs text-muted-foreground">Polar.sh</span>
-          </a>
-          <div className="flex flex-col items-center opacity-60">
-            <Logo name="betterauth" className="w-10 h-10 rounded mb-2 opacity-80 group-hover:opacity-100 transition" />
-            <span className="text-xs text-muted-foreground">Better Auth (soon)</span>
-          </div>
-          <div className="flex flex-col items-center opacity-60">
-            <Logo name="vercel" className="w-10 h-10 rounded mb-2 opacity-80 group-hover:opacity-100 transition" />
-            <span className="text-xs text-muted-foreground">Vercel (soon)</span>
-          </div>
-        </div>
+      <section className="flex flex-col items-center justify-center px-4 py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent w-full mt-32">
+        <h2 className="text-2xl font-semibold mb-12 text-center">Try it yourself</h2>
+        <RegistryDemo />
       </section>
 
       {/* FAQ */}
-      <section className="flex flex-col items-center justify-center px-4 mb-24 w-full">
+      <section className="flex flex-col items-center justify-center px-4 w-full mt-32">
         <h2 className="text-2xl font-semibold mb-8 text-center">FAQ</h2>
         <div className="w-full max-w-2xl">
           <Accordion type="multiple" className="border-none bg-transparent">
@@ -275,7 +209,7 @@ export default function Page() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full flex items-center justify-center py-8">
+      <footer className="w-full flex items-center justify-center py-12 mt-32">
         <div className="flex items-center gap-4 text-xs text-muted-foreground">
           <a href="https://x.com/shadcn" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition">
             <Avatar className="w-8 h-8 rounded-full">
