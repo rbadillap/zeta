@@ -1,26 +1,17 @@
-import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import Logo from "@/components/logos"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import Link from "next/link"
-import { Logo as Alpine } from "@/components/logo"
-import { Separator } from "@/components/ui/separator"
-import { DemoSection } from "@/components/demo-section"
 import { Badge } from "@/components/ui/badge"
 import { PlusIcon, MailIcon } from "lucide-react"
-import { RegistryDemo } from "@/components/registry-demo"
-// import { AddCommand } from "@/components/add-command"
-// import { OpenInV0 } from "@/components/open-in-v0"
+import { Demo } from "@/components/demo"
 
 export default function Page() {
-  const logoUrl = 'https://registry-template-zeta.vercel.app/logo'
-  
   return (
     <main className="min-h-svh flex flex-col bg-background text-foreground">
       {/* Hero */}
       <section className="relative flex flex-col items-center justify-center text-center py-28 px-4 min-h-[60vh]">
-        {/* Animated background glow */}
+        {/* background glow */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[480px] h-[320px] bg-gradient-to-br from-primary/30 via-accent/20 to-transparent rounded-full blur-3xl opacity-60 animate-pulse-slow" />
         </div>
@@ -37,7 +28,7 @@ export default function Page() {
             components &mdash; built for private and premium projects.
           </p>
           <p className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl flex items-center gap-4">
-            Compatible with <a href="https://alpine-registry.vercel.app" target="_blank" rel="noopener noreferrer" className="underline"><Alpine /></a>
+            Compatible with <a href="https://alpine-registry.vercel.app" target="_blank" rel="noopener noreferrer" className="underline"><Logo name="alpine" /></a>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
             {/* <Button
@@ -148,7 +139,7 @@ export default function Page() {
       {/* Demo */}
       <section className="flex flex-col items-center justify-center px-4 py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent w-full mt-32">
         <h2 className="text-2xl font-semibold mb-12 text-center">Try it yourself</h2>
-        <RegistryDemo />
+        <Demo />
       </section>
 
       {/* FAQ */}

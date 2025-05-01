@@ -1,62 +1,39 @@
-'use client'
-
+import path from 'path'
+import fs from 'fs/promises'
+import type { BundledLanguage } from 'shiki'
+import { codeToHtml } from 'shiki'
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
 
-// Sample data structure for files
-const files = [
-  {
-    name: "logo.tsx",
-    content: `export function Logo() {
-  return (
-    <div className="flex items-center space-x-2">
-      <img src="/logo.svg" alt="Logo" className="w-8 h-8" />
-      <span className="font-bold text-xl">Brand</span>
-    </div>
-  )
-}`
-  },
-  {
-    name: "logo.test.tsx",
-    content: `import { render } from '@testing-library/react'
-import { Logo } from './logo'
+// Cache the registry import
+const registryData = await import("@/registry.json")
+const registry = registryData.default
 
-describe('Logo', () => {
-  it('renders without crashing', () => {
-    const { container } = render(<Logo />)
-    expect(container).toBeInTheDocument()
+const files = await Promise.all(
+  registry.items.map(async (item) => {
+    const filePath = path.join(process.cwd(), item.files[0].path)
+    const content = await fs.readFile(filePath, "utf8")
+    return { ...item.files[0], content }
   })
-})`
-  }
-]
+)
 
-// Sample registry.json content
-const registryContent = {
-  "style": "default",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "app/globals.css",
-    "baseColor": "slate",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
-  },
-  "components": [
-    {
-      "name": "logo",
-      "type": "component",
-      "files": ["logo.tsx", "logo.test.tsx"],
-      "registryDependencies": []
-    }
-  ]
+interface CodeBlockProps {
+  children: string
+  lang: BundledLanguage
+  className?: string
 }
 
-export function RegistryDemo() {
+async function CodeBlock(props: CodeBlockProps) {
+  const out = await codeToHtml(props.children, {
+    lang: props.lang,
+    theme: 'dark-plus'
+  })
+
+  return <div dangerouslySetInnerHTML={{ __html: out }} />
+}
+
+export function Demo() {
   return (
     <div className="w-full max-w-5xl mx-auto space-y-8">
       {/* Demo Preview */}
@@ -99,12 +76,18 @@ export function RegistryDemo() {
                   {files.map((file, index) => (
                     <AccordionItem key={index} value={`file-${index}`}>
                       <AccordionTrigger className="text-sm font-mono">
-                        {file.name}
+                        {file.target}
                       </AccordionTrigger>
                       <AccordionContent>
-                        <pre className="p-4 rounded-md bg-muted overflow-x-auto">
+                        <div className="p-4 rounded-md bg-[#1e1e1e] overflow-x-auto">
+                          <CodeBlock lang="tsx">
+                            {file.content}
+                          </CodeBlock>
+                        </div>
+
+                        {/* <pre className="p-4 rounded-md bg-muted overflow-x-auto">
                           <code className="text-sm">{file.content}</code>
-                        </pre>
+                        </pre> */}
                       </AccordionContent>
                     </AccordionItem>
                   ))}
@@ -114,11 +97,11 @@ export function RegistryDemo() {
             
             <TabsContent value="registry" className="mt-0">
               <div className="flex min-h-[500px] w-full flex-col rounded-md border p-4 bg-background">
-                <pre className="p-4 rounded-md bg-muted overflow-x-auto">
-                  <code className="text-sm">
-                    {JSON.stringify(registryContent, null, 2)}
-                  </code>
-                </pre>
+                <div className="p-4 rounded-md bg-[#1e1e1e] overflow-x-auto">
+                  <CodeBlock lang="json">
+                    {JSON.stringify(registry, null, 2)}
+                  </CodeBlock>
+                </div>
               </div>
             </TabsContent>
           </div>

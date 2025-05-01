@@ -23,7 +23,7 @@ interface TerminalCommandCopyProps {
 export function TerminalCommandCopy({
   logo = <Logo name="shadcn" className="w-8 h-8 rounded opacity-80 group-hover:opacity-100 transition" />, 
   className, 
-  command = "https://registry-template-zeta.vercel.app/registry/logo?token=<token>"
+  command = "https://zeta-registry.vercel.app/registry/logo?token=<token>"
 }: TerminalCommandCopyProps) {
   const [isCopied, setIsCopied] = React.useState(false)
 

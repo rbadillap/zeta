@@ -3,7 +3,7 @@
 Zeta is a registry for [shadcn/ui](https://ui.shadcn.com/) that enables secure distribution of private or premium components, integrating advanced licensing and protection. Perfect for teams and creators who want to share components without worrying about unauthorized access.
 
 ## Demo
-https://registry-template-zeta.vercel.app
+https://zeta-registry.vercel.app
 
 ## Features
 
@@ -41,7 +41,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Example Usage
 
 ```bash
-npx shadcn add https://registry-template-zeta.vercel.app/logo
+npx shadcn add https://zeta-registry.vercel.app/logo
 ```
 
 ## Integrations
