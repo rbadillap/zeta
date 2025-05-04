@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -22,12 +23,12 @@ import {
   CardFooter
 } from "@/components/ui/card"
 import { KeyRound, Eye, EyeOff } from "lucide-react"
-import React from "react"
 import { cn } from "@/lib/utils"
 
 const validateSchema = z.object({
   licenseKey: z.string().min(1, { message: "License key is required." })
 })
+
 interface ValidateFormData {
   licenseKey: string
 }

@@ -1,4 +1,4 @@
-export default function Logo(props: React.SVGProps<SVGSVGElement>) {
+export default function Zeta(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path d="M20.6673 16.5C20.6673 18.8012 18.8018 20.6666 16.5007 20.6666C14.1995 20.6666 12.334 18.8012 12.334 16.5C12.334 14.1988 14.1995 12.3333 16.5007 12.3333C18.8018 12.3333 20.6673 14.1988 20.6673 16.5Z" fill="currentColor"/>

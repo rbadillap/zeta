@@ -1,18 +1,59 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "zeta",
+  "name": "Zeta Registry | A shadcn/ui registry for private and premium projects",
+  "description": "Protect your blocks and components with integrations such as Polar.sh License Keys, and more.",
   "homepage": "https://zeta-registry.vercel.app",
   "items": [
     {
-      "name": "logo",
-      "type": "registry:component",
-      "title": "Logo",
-      "description": "The Zeta logo component",
+      "name": "registry-nextjs",
+      "type": "registry:block",
+      "title": "Zeta Registry",
+      "dependencies": [
+        "shadcn",
+        "lucide-react",
+        "zod",
+        "@hookform/resolvers",
+        "react-hook-form"
+      ],
+      "registryDependencies": [
+        "sonner",
+        "button",
+        "card",
+        "input",
+        "form"
+      ],
+      "description": 
+        "This block contains contains all the necessary files and configurations to serve and manage a shadcn/ui component registry, including API protection, and more features.",
       "files": [
         {
-          "path": "registry/new-york/logos/zeta.tsx",
+          "path": "app/(registry)/registry/[name]/route.ts",
+          "type": "registry:file",
+          "target": "app/registry/[name]/route.ts"
+        },
+        {
+          "path": "app/(registry)/registry/access/validate-license/page.tsx",
+          "type": "registry:page",
+          "target": "app/registry/access/validate-license/page.tsx"
+        },
+        {
+          "path": "app/(registry)/registry/api/validate-license/route.ts",
+          "type": "registry:file",
+          "target": "app/registry/api/validate-license/route.ts"
+        },
+        {
+          "path": "components/terminal-command-copy.tsx",
           "type": "registry:component",
-          "target": "components/logos/zeta.tsx"
+          "target": "components/terminal-command-copy.tsx"
+        },
+        {
+          "path": "components/validate-license-form.tsx",
+          "type": "registry:component",
+          "target": "components/validate-license-form.tsx"
+        },
+        {
+          "path": "hooks/use-copy-to-clipboard.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-copy-to-clipboard.ts"
         }
       ]
     }

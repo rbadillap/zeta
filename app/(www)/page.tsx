@@ -28,7 +28,7 @@ export default function Page() {
             components &mdash; built for private and premium projects.
           </p>
           <p className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl flex items-center gap-4">
-            Compatible with <a href="https://alpine-registry.vercel.app" target="_blank" rel="noopener noreferrer" className="underline"><Logo name="alpine" /></a>
+            Compatible with latest features of <a href="https://alpine-registry.vercel.app" target="_blank" rel="noopener noreferrer" className="underline"><Logo name="alpine" /></a>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
             {/* <Button

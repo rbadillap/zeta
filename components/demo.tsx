@@ -2,11 +2,21 @@ import path from 'path'
 import fs from 'fs/promises'
 import type { BundledLanguage } from 'shiki'
 import { codeToHtml } from 'shiki'
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
+import { 
+  Tabs, 
+  TabsContent, 
+  TabsList, 
+  TabsTrigger 
+} from "@/components/ui/tabs"
+import { 
+  Accordion, 
+  AccordionContent, 
+  AccordionItem, 
+  AccordionTrigger 
+} from "@/components/ui/accordion"
+import { AddCommand } from '@/components/add-command'
+// import { OpenInV0 } from './open-in-v0'
 
-// Cache the registry import
 const registryData = await import("@/registry.json")
 const registry = registryData.default
 
@@ -45,17 +55,10 @@ export function Demo() {
               <TabsTrigger value="code">Code</TabsTrigger>
               <TabsTrigger value="registry">Registry</TabsTrigger>
             </TabsList>
-            
+
             <div className="hidden md:flex items-center gap-2">
-              <Button variant="outline" size="sm">
-                Copy
-              </Button>
-              <Button variant="outline" size="sm">
-                View Raw
-              </Button>
-              <Button variant="outline" size="sm">
-                Open in v0
-              </Button>
+              <AddCommand />
+              {/* <OpenInV0 name="logo" className="w-fit" /> */}
             </div>
           </div>
           
@@ -84,10 +87,6 @@ export function Demo() {
                             {file.content}
                           </CodeBlock>
                         </div>
-
-                        {/* <pre className="p-4 rounded-md bg-muted overflow-x-auto">
-                          <code className="text-sm">{file.content}</code>
-                        </pre> */}
                       </AccordionContent>
                     </AccordionItem>
                   ))}
