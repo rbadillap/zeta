@@ -55,7 +55,7 @@ export function Demo() {
             <TabsList className="bg-background text-foreground">
               <TabsTrigger value="preview">Preview</TabsTrigger>
               <TabsTrigger value="code">Code</TabsTrigger>
-              <TabsTrigger value="registry">Registry</TabsTrigger>
+              <TabsTrigger value="registry">registry.json</TabsTrigger>
             </TabsList>
 
             <div className="hidden md:flex items-center gap-2">
