@@ -8,6 +8,7 @@
       "name": "registry-nextjs",
       "type": "registry:block",
       "title": "Zeta Registry",
+      "author": "Ronny Badilla - @rbadillap",
       "dependencies": [
         "shadcn",
         "lucide-react",

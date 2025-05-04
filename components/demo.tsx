@@ -21,11 +21,13 @@ const registryData = await import("@/registry.json")
 const registry = registryData.default
 
 const files = await Promise.all(
-  registry.items.map(async (item) => {
-    const filePath = path.join(process.cwd(), item.files[0].path)
-    const content = await fs.readFile(filePath, "utf8")
-    return { ...item.files[0], content }
-  })
+  registry.items.flatMap((item) =>
+    item.files.map(async (file) => {
+      const filePath = path.join(process.cwd(), file.path)
+      const content = await fs.readFile(filePath, "utf8")
+      return { ...file, content }
+    })
+  )
 )
 
 interface CodeBlockProps {

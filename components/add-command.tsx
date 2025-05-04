@@ -8,6 +8,9 @@ import Logo from "@/components/logos";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { ClipboardIcon } from "lucide-react";
 
+const zetaRegistryUrl = 'https://zeta-registry.vercel.app'
+const registryUrl = `${zetaRegistryUrl}/r/registry-nextjs.json`
+
 export function AddCommand() {
   const { isCopied, copyToClipboard } = useCopyToClipboard()
   const { isCopied: isCopiedUrl, copyToClipboard: copyToClipboardUrl } = useCopyToClipboard()
@@ -18,9 +21,9 @@ export function AddCommand() {
         size="sm"
         className="rounded-sm !pl-2"
         onClick={() => {
-          copyToClipboard('pnpm dlx shadcn@latest add button')
+          copyToClipboard(`pnpm dlx shadcn@latest add ${registryUrl}`)
           toast.success('Command copied to clipboard', {
-            description: 'pnpm dlx shadcn@latest add button',
+            description: `pnpm dlx shadcn@latest add ${registryUrl}`,
           })
         }}
       >
@@ -36,9 +39,9 @@ export function AddCommand() {
         size="sm"
         className="rounded-sm !pl-2"
         onClick={() => {
-          copyToClipboardUrl('https://zeta-registry.vercel.app/logo')
+          copyToClipboardUrl(`${zetaRegistryUrl}/logo`)
           toast.success('URL copied to clipboard', {
-            description: 'https://zeta-registry.vercel.app/logo',
+            description: `${zetaRegistryUrl}/logo`,
           })
         }}
       >
