@@ -14,14 +14,17 @@
         "lucide-react",
         "zod",
         "@hookform/resolvers",
-        "react-hook-form"
+        "react-hook-form",
+        "@polar-sh/sdk",
+        "jose",
+        "nanoid"
       ],
       "registryDependencies": [
-        "sonner",
         "button",
         "card",
+        "form",
         "input",
-        "form"
+        "sonner"
       ],
       "description": 
         "This block contains contains all the necessary files and configurations to serve and manage a shadcn/ui component registry, including API protection, and more features.",
@@ -55,6 +58,16 @@
           "path": "hooks/use-copy-to-clipboard.ts",
           "type": "registry:hook",
           "target": "hooks/use-copy-to-clipboard.ts"
+        },
+        {
+          "path": "lib/polar/client.ts",
+          "type": "registry:lib",
+          "target": "lib/polar/client.ts"
+        },
+        {
+          "path": "lib/shadcn/registry/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/shadcn/registry/utils.ts"
         }
       ]
     }

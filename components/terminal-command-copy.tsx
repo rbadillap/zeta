@@ -2,7 +2,7 @@
 
 import React from "react"
 import { toast } from "sonner"
-import Logo from "@/components/logos"
+// import Logo from "@/components/logos"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -14,6 +14,37 @@ import {
 import { cn } from "@/lib/utils"
 import { Check, Copy } from "lucide-react"
 
+// shadcn logo
+function Logo(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
+      <rect width="256" height="256" fill="none"></rect>
+      <line
+        x1="208"
+        y1="128"
+        x2="128"
+        y2="208"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="32"
+      ></line>
+      <line
+        x1="192"
+        y1="40"
+        x2="40"
+        y2="192"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="32"
+      ></line>
+    </svg>
+  )
+}
+
 interface TerminalCommandCopyProps {
   logo?: React.ReactNode
   className?: string
@@ -21,7 +52,7 @@ interface TerminalCommandCopyProps {
 }
 
 export function TerminalCommandCopy({
-  logo = <Logo name="shadcn" className="w-8 h-8 rounded opacity-80 group-hover:opacity-100 transition" />, 
+  logo = <Logo className="w-8 h-8 rounded opacity-80 group-hover:opacity-100 transition" />, 
   className, 
   command = "https://zeta-registry.vercel.app/registry/logo?token=<token>"
 }: TerminalCommandCopyProps) {

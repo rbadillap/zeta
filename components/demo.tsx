@@ -71,6 +71,7 @@ export function Demo() {
                   src="https://zeta-registry.vercel.app/logo" 
                   className="w-full h-[500px] border-0"
                   title="Logo Component Preview"
+                  allow="clipboard-read; clipboard-write"
                 />
               </div>
             </TabsContent>
