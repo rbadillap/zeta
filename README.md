@@ -1,62 +1,118 @@
-# Zeta - The Open Source Registry for shadcn/ui Components
+# Zeta – Secure shadcn/ui Component Registry
 
-Zeta is a registry for [shadcn/ui](https://ui.shadcn.com/) that enables secure distribution of private or premium components, integrating advanced licensing and protection. Perfect for teams and creators who want to share components without worrying about unauthorized access.
+![!demo](https://zeta-registry.vercel.app)
 
-## Demo
-https://zeta-registry.vercel.app
+Zeta is an open source registry for [shadcn/ui](https://ui.shadcn.com/) components, designed for secure distribution of private or premium components. It integrates with [Polar.sh](https://docs.polar.sh/features/benefits/license-keys) for automated license key management and validation.
 
-## Features
+> **Documentation is in progress.**   
+> For now, follow this guide and refer to [shadcn registry docs](https://ui.shadcn.com/docs/registry/getting-started) and [Polar license key docs](https://docs.polar.sh/features/benefits/license-keys) for details.
 
-- 🔒 **Protected Components**: Secure your components with license key validation
-- 🚀 **Easy Installation**: Install components directly via the shadcn CLI
-- 🔑 **License Management**: Integration with [Polar.sh](https://polar.sh) for automated license key validation
-- 🎨 **Component Registry**: Host and distribute your shadcn/ui components securely
+---
 
-## Getting Started
+## Quick Start
 
-1. Clone this repository:
+### 1. Create a License Key
+
+To protect your components, you need a valid license key from Polar.sh.
+
+- [How to create a license key in Polar](https://docs.polar.sh/features/benefits/license-keys)
+
+---
+
+### 2. Choose Your Setup
+
+#### **A. Install via shadcn CLI (recommended for new Next.js projects)**
+
+1. Start with a fresh Next.js app.
+2. Run:
+
+   ```bash
+   pnpm dlx shadcn@latest add https://zeta-registry.vercel.app/r/registry.json
+   ```
+
+This command copies the registry components into your project.
+
+#### **B. Use this repository as a template**
+
 ```bash
 git clone https://github.com/rbadillap/zeta.git
 cd zeta
-```
-
-2. Install dependencies:
-```bash
 pnpm install
 ```
 
-3. Run the development server:
+---
+
+### 3. Configure Environment Variables
+
+Copy `.env.example` to `.env` and fill in the required values:
+
+```env
+# Zeta registry (used for signing tokens)
+# https://nextjs.org/docs/app/guides/authentication#1-generating-a-secret-key
+REGISTRY_TOKEN_SECRET="your-random-secret"
+
+# Polar.sh integration
+POLAR_ORG_ID="your-polar-organization-id"
+POLAR_ACCESS_TOKEN="your-polar-access-token"
+POLAR_IS_SANDBOX="false" # set to "true" for Polar sandbox/testing
+```
+
+**Variable explanations:**
+
+- `REGISTRY_TOKEN_SECRET`: Secret key for signing and verifying registry tokens. Generate a strong random value. [Docs](https://nextjs.org/docs/app/guides/authentication#1-generating-a-secret-key)
+- `POLAR_ORG_ID`: Your Polar.sh organization ID. Find it in your Polar dashboard.
+- `POLAR_ACCESS_TOKEN`: API token for accessing Polar.sh endpoints.
+- `POLAR_IS_SANDBOX`: Set to `"true"` to use Polar's sandbox environment for testing.
+
+---
+
+### 4. Registry Setup & Component Protection
+
+Zeta expects a `registry.json` file and at least one component to be present in your project.
+
+- Follow the [shadcn registry getting started guide](https://ui.shadcn.com/docs/registry/getting-started) to:
+  - Create your own `registry.json`
+  - Add your components (e.g., in `registry/new-york/your-component/`)
+  - Reference and protect components as needed
+
+**Zeta's core value:**  
+Protect your premium/private components by validating license keys before allowing installation via the shadcn CLI.
+
+---
+
+### 5. Run the Registry Server
+
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Your registry will be available at [http://localhost:3000](http://localhost:3000).
+
+---
 
 ## How It Works
 
-1. **Publish Components**: Download this template or copy the components you need
-2. **Protect with License Keys**: Integrate with Polar.sh to issue and validate licenses automatically
-3. **Install via CLI**: Users can install components using the shadcn CLI with their access key
+1. **Create a license key** in Polar.sh
+2. **Set up your registry** (clone this repo or use shadcn CLI)
+3. **Configure environment variables** for Polar integration and token signing
+4. **Add and protect your components** in the registry
+5. **Distribute components** securely—users must provide a valid license key to install
 
-## Example Usage
+---
 
-```bash
-npx shadcn add https://zeta-registry.vercel.app/logo
-```
+## Links & Further Reading
 
-## Integrations
+- [Polar.sh License Key Docs](https://docs.polar.sh/features/benefits/license-keys)
+- [shadcn Registry Getting Started](https://ui.shadcn.com/docs/registry/getting-started)
+- [Zeta Demo](https://zeta-registry.vercel.app#example)
+- [Zeta Issues & Discussions](https://github.com/rbadillap/zeta/discussions)
 
-- ✅ [Polar.sh](https://docs.polar.sh/features/benefits/license-keys) - License key management
-- 🔜 Better Auth - Coming soon
-- 🔜 Vercel - Coming soon
-
-## Contributing
-
-Contributions are welcome! Feel free to submit a Pull Request.
+---
 
 ## Author
 
-Created by [Ronny Badilla](https://x.com/rbadillap)
+Created by [Ronny Badilla](https://x.com/rbadillap)  
+Contact: info@rbadillap.dev
 
 ## License
 
