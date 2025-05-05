@@ -138,7 +138,11 @@ export default function Page() {
 
       {/* Demo */}
       <section className="flex flex-col items-center justify-center px-4 py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent w-full mt-32">
-        <h2 className="text-2xl font-semibold mb-12 text-center">Try it yourself</h2>
+        <a href="#example">
+          <h2 className="text-2xl font-semibold mb-12 text-center">
+            Try it yourself
+          </h2>
+        </a>
         <Demo />
       </section>
 
