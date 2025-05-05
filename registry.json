@@ -75,6 +75,20 @@
           "target": "middleware.ts"
         }
       ]
+    },
+    {
+      "name": "logo",
+      "type": "registry:component",
+      "title": "Branding",
+      "author": "Ronny Badilla - @rbadillap",
+      "description": "This component contains the branding for the Zeta registry. Feel free to use it in your project.",
+      "files": [
+        {
+          "path": "registry/new-york/branding/zeta.tsx",
+          "type": "registry:component",
+          "target": "components/logos/zeta.tsx"
+        }
+      ]
     }
   ]
 }

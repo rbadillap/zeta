@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "branding",
+  "name": "logo",
   "type": "registry:component",
   "title": "Branding",
   "author": "Ronny Badilla - @rbadillap",

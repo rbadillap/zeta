@@ -69,7 +69,7 @@ export function TerminalCommandCopy({
   const returnPath = searchParams.get('return') || '/';
 
 
-  const command = window.location.origin + returnPath + "?token=" + token
+  const command = `pnpm dlx shadcn add "${window.location.origin + returnPath + "?token=" + token}"`
 
   async function handleCopy() {
     try {
@@ -101,7 +101,7 @@ export function TerminalCommandCopy({
         <CardContent className="pt-4">
           <div className="flex items-center gap-2 bg-muted rounded-lg px-3 py-2 border border-border font-mono overflow-x-auto">
             <span className="flex-1 text-xs md:text-sm select-all break-all">
-              {command}
+              pnpm dlx shadcn add "{command}"
             </span>
             <Button
               type="button"
