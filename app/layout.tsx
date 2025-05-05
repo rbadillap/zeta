@@ -21,6 +21,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: registry.name,
   description: registry.description,
+  icons: {
+    icon: '/icon.png',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: registry.name,
+    description: registry.description,
+    images: ['/og.png'],
+  },
 };
 
 export default function RootLayout({
