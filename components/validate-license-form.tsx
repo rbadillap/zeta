@@ -38,9 +38,10 @@ interface ValidateLicenseFormProps {
   className?: string
   onSubmit: (data: ValidateFormData) => void | Promise<void>
   description?: React.ReactNode
+  error?: string | null
 }
 
-export function ValidateLicenseForm({ logo, className, description, onSubmit }: ValidateLicenseFormProps) {
+export function ValidateLicenseForm({ logo, className, description, onSubmit, error }: ValidateLicenseFormProps) {
   const [showKey, setShowKey] = React.useState(false)
   const form = useForm<ValidateFormData>({
     resolver: zodResolver(validateSchema),
@@ -62,6 +63,11 @@ export function ValidateLicenseForm({ logo, className, description, onSubmit }: 
           </CardDescription>
         </CardHeader>
         <CardContent className="pt-4">
+          {error && (
+            <div className="mb-4 text-destructive text-sm text-center font-medium" data-slot="form-error">
+              {error}
+            </div>
+          )}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField

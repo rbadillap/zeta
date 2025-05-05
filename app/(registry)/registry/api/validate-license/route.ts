@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ valid: false, error: "Invalid license key." }, { status: 400 })
   } catch (error) {
+    console.error(error)
     return NextResponse.json({ valid: false, error: (error as Error).message || "Malformed request." }, { status: 400 })
   }
 } 

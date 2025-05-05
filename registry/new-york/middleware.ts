@@ -3,9 +3,14 @@ import type { NextRequest } from "next/server"
 import { verifyToken } from "@/lib/shadcn/registry/utils"
 
 export async function middleware(request: NextRequest) {
-  // redirect to /example/access/validate-license if the url starts with /example
-  if (request.nextUrl.pathname.startsWith('/logo')) {
-    return NextResponse.redirect(new URL('/example/access/validate-license', request.url))
+  // Allow access to the license validation page without token
+  if (request.nextUrl.pathname === '/registry/access/validate-license') {
+    return NextResponse.next()
+  }
+
+  // Allow access to the license validation api without token but ensure is a POST request
+  if (request.nextUrl.pathname === '/registry/api/validate-license' && request.method === 'POST') {
+    return NextResponse.next()
   }
 
   // Get the authorization token from ?token=
@@ -29,5 +34,7 @@ export async function middleware(request: NextRequest) {
 
 // Configure the paths that should be matched by this middleware
 export const config = {
-  matcher: ['/registry/:path*', '/logo']
+  matcher: [
+    '/registry/:path*',
+  ]
 } 

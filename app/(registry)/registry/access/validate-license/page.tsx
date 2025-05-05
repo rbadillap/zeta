@@ -3,7 +3,6 @@
 import React from "react"
 // import Logo from "@/components/logos"
 import { ValidateLicenseForm } from "@/components/validate-license-form"
-import { toast } from "sonner"
 import { TerminalCommandCopy } from "@/components/terminal-command-copy"
 
 function PolarLogo(props: React.SVGProps<SVGSVGElement>) {
@@ -24,8 +23,10 @@ function PolarLogo(props: React.SVGProps<SVGSVGElement>) {
 export default function ValidateLicensePage() {
   const [isLicenseValid, setIsLicenseValid] = React.useState(false)
   const [token, setToken] = React.useState<string | null>(null)
+  const [error, setError] = React.useState<string | null>(null)
 
   async function handleSubmit(data: { licenseKey: string }) {
+    setError(null)
     try {
       const res = await fetch("/registry/api/validate-license", {
         method: "POST",
@@ -36,12 +37,11 @@ export default function ValidateLicensePage() {
       if (res.ok && result.valid && result.token) {
         setToken(result.token)
         setIsLicenseValid(true)
-        toast.success("License key validated successfully.")
       } else {
-        toast.error(result.error || "Invalid license key.")
+        setError(result.error || "Invalid license key.")
       }
     } catch (error) {
-      toast.error((error as Error).message || "Unexpected error.")
+      setError((error as Error).message || "Unexpected error.")
     }
   }
 
@@ -53,6 +53,7 @@ export default function ValidateLicensePage() {
             className="w-full max-w-md"
             logo={<PolarLogo className="w-8 h-8 rounded opacity-80 group-hover:opacity-100 transition" />} 
             onSubmit={handleSubmit}
+            error={error}
           />
         ) : (
           <TerminalCommandCopy 
