@@ -1,6 +1,8 @@
 # Zeta – Secure shadcn/ui Component Registry
 
-![!demo](https://zeta-registry.vercel.app)
+<p align="center">
+   <img alt="hero image" src="https://zeta-registry.vercel.app/screenshot.png" />
+</p>
 
 Zeta is an open source registry for [shadcn/ui](https://ui.shadcn.com/) components, designed for secure distribution of private or premium components. It integrates with [Polar.sh](https://docs.polar.sh/features/benefits/license-keys) for automated license key management and validation.
 
