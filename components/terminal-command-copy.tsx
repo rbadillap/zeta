@@ -1,7 +1,9 @@
 "use client"
 
 import React from "react"
-import { toast } from "sonner"
+import { useSearchParams } from "next/navigation"
+import { Check, Copy } from "lucide-react"
+import { cn } from "@/lib/utils"
 // import Logo from "@/components/logos"
 import { Button } from "@/components/ui/button"
 import {
@@ -11,9 +13,11 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
-import { Check, Copy } from "lucide-react"
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+import { 
+  Alert, 
+  AlertTitle, 
+  AlertDescription,
+} from "@/components/ui/alert"
 
 // shadcn logo
 function Logo(props: React.SVGProps<SVGSVGElement>) {
@@ -50,15 +54,22 @@ interface TerminalCommandCopyProps {
   logo?: React.ReactNode
   className?: string
   command?: string
+  token?: string
 }
 
 export function TerminalCommandCopy({
   logo = <Logo className="w-8 h-8 rounded opacity-80 group-hover:opacity-100 transition" />, 
   className, 
-  command = "https://zeta-registry.vercel.app/registry/logo?token=<token>"
+  token,
 }: TerminalCommandCopyProps) {
   const [isCopied, setIsCopied] = React.useState(false)
   const [showAlert, setShowAlert] = React.useState<null | 'success' | 'error'>(null)
+
+  const searchParams = useSearchParams();
+  const returnPath = searchParams.get('return') || '/';
+
+
+  const command = window.location.origin + returnPath + "?token=" + token
 
   async function handleCopy() {
     try {
