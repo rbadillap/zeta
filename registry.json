@@ -20,6 +20,7 @@
         "nanoid"
       ],
       "registryDependencies": [
+        "alert",
         "button",
         "card",
         "form",

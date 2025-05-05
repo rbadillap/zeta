@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/card"
 import { KeyRound, Eye, EyeOff } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 
 const validateSchema = z.object({
   licenseKey: z.string().min(1, { message: "License key is required." })
@@ -64,9 +65,10 @@ export function ValidateLicenseForm({ logo, className, description, onSubmit, er
         </CardHeader>
         <CardContent className="pt-4">
           {error && (
-            <div className="mb-4 text-destructive text-sm text-center font-medium" data-slot="form-error">
-              {error}
-            </div>
+            <Alert variant="destructive" className="mb-4">
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
           )}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

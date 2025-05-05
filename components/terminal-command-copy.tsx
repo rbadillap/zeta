@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { Check, Copy } from "lucide-react"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 
 // shadcn logo
 function Logo(props: React.SVGProps<SVGSVGElement>) {
@@ -57,15 +58,20 @@ export function TerminalCommandCopy({
   command = "https://zeta-registry.vercel.app/registry/logo?token=<token>"
 }: TerminalCommandCopyProps) {
   const [isCopied, setIsCopied] = React.useState(false)
+  const [showAlert, setShowAlert] = React.useState<null | 'success' | 'error'>(null)
 
   async function handleCopy() {
     try {
       await navigator.clipboard.writeText(command)
       setIsCopied(true)
-      toast.success("Command copied to clipboard!")
-      setTimeout(() => setIsCopied(false), 1500)
+      setShowAlert('success')
+      setTimeout(() => {
+        setIsCopied(false)
+        setShowAlert(null)
+      }, 1500)
     } catch {
-      toast.error("Failed to copy command")
+      setShowAlert('error')
+      setTimeout(() => setShowAlert(null), 1500)
     }
   }
 
@@ -97,6 +103,17 @@ export function TerminalCommandCopy({
               {isCopied ? <Check className="size-4" /> : <Copy className="size-4" />}
             </Button>
           </div>
+          {showAlert === 'success' && (
+            <Alert className="mt-4">
+              <AlertTitle>Command copied to clipboard!</AlertTitle>
+            </Alert>
+          )}
+          {showAlert === 'error' && (
+            <Alert variant="destructive" className="mt-4">
+              <AlertTitle>Failed to copy command</AlertTitle>
+              <AlertDescription>Please try again.</AlertDescription>
+            </Alert>
+          )}
         </CardContent>
       </Card>
     </div>

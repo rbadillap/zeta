@@ -4,6 +4,7 @@ import React from "react"
 // import Logo from "@/components/logos"
 import { ValidateLicenseForm } from "@/components/validate-license-form"
 import { TerminalCommandCopy } from "@/components/terminal-command-copy"
+import { useSearchParams } from "next/navigation"
 
 function PolarLogo(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -24,6 +25,8 @@ export default function ValidateLicensePage() {
   const [isLicenseValid, setIsLicenseValid] = React.useState(false)
   const [token, setToken] = React.useState<string | null>(null)
   const [error, setError] = React.useState<string | null>(null)
+  const searchParams = useSearchParams();
+  const returnPath = searchParams.get('return') || '/registry/logo';
 
   async function handleSubmit(data: { licenseKey: string }) {
     setError(null)
@@ -58,7 +61,7 @@ export default function ValidateLicensePage() {
         ) : (
           <TerminalCommandCopy 
             className="w-full max-w-md"
-            command={`pnpm dlx shadcn add https://zeta-registry.vercel.app/logo?token=${token}`}
+            command={`pnpm dlx shadcn add ${typeof window !== 'undefined' ? window.location.origin : ''}${returnPath}?token=${token}`}
           />
         )}
       </section>

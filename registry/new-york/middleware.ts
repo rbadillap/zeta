@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
   const token = request.nextUrl.searchParams.get('token')
 
   if (!token) {
-    return NextResponse.redirect(new URL('/registry/access/validate-license', request.url))
+    return NextResponse.redirect(new URL('/registry/access/validate-license?return=' + request.nextUrl.pathname, request.url))
   }
 
   const isValidToken = await verifyToken(token)
