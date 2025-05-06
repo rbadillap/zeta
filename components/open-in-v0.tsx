@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 export function OpenInV0({
-  name,
+  url,
   className,
-}: { name: string } & React.ComponentProps<typeof Button>) {
+}: { url: string } & React.ComponentProps<typeof Button>) {
   return (
     <Button
       aria-label="Open in v0"
@@ -16,7 +16,7 @@ export function OpenInV0({
       asChild
     >
       <a
-        href={`https://v0.dev/chat/api/open?url=${name}`}
+        href={`https://v0.dev/chat/api/open?url=${url}`}
         target="_blank"
         rel="noreferrer"
       >

@@ -77,9 +77,6 @@ Zeta expects a `registry.json` file and at least one component to be present in 
   - Add your components (e.g., in `registry/new-york/your-component/`)
   - Reference and protect components as needed
 
-**Zeta's core value:**  
-Protect your premium/private components by validating license keys before allowing installation via the shadcn CLI.
-
 ---
 
 ### 5. Run the Registry Server
