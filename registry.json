@@ -89,6 +89,28 @@
           "target": "components/logos/zeta.tsx"
         }
       ]
+    },
+    {
+      "name": "showcase",
+      "type": "registry:block",
+      "title": "Showcase",
+      "author": "Ronny Badilla - @rbadillap",
+      "description": "This block contains a real world example of how to use Zeta.",
+      "registryDependencies": [
+        "https://zeta-registry.vercel.app/r/registry-nextjs.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/examples/showcase/page.tsx",
+          "type": "registry:page",
+          "target": "app/page.tsx"
+        },
+        {
+          "path": "registry/new-york/ui/countdown.tsx",
+          "type": "registry:component",
+          "target": "components/countdown.tsx"
+        }
+      ]
     }
   ]
 }

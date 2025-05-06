@@ -15,7 +15,7 @@ import {
   AccordionTrigger 
 } from "@/components/ui/accordion"
 import { AddCommand } from '@/components/add-command'
-// import { OpenInV0 } from './open-in-v0'
+import { OpenInV0 } from '@/components/open-in-v0'
 
 const registryData = await import("@/registry.json")
 const registry = registryData.default
@@ -60,7 +60,7 @@ export function Demo() {
 
             <div className="hidden md:flex items-center gap-2">
               <AddCommand />
-              {/* <OpenInV0 name="logo" className="w-fit" /> */}
+              <OpenInV0 url="https://zeta-registry.vercel.app/r/showcase.json" className="w-fit" />
             </div>
           </div>
           
