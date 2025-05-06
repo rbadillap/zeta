@@ -1,4 +1,5 @@
 import * as React from "react"
+import { cn } from "@/lib/utils"
 
 interface CountdownProps {
   until?: Date | string
@@ -38,7 +39,7 @@ export function Countdown({ until, label = "Time left", className }: CountdownPr
   }, [until])
 
   return (
-    <div className={`w-full max-w-md flex flex-col items-center justify-center py-8 ${className ?? ""}`.trim()}>
+    <div className={cn("w-full max-w-md flex flex-col items-center justify-center py-8", className)}>
       <span className="text-6xl font-mono font-light tracking-widest text-foreground select-none">
         {time}
       </span>
