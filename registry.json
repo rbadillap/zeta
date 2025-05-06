@@ -108,7 +108,7 @@
         {
           "path": "registry/new-york/ui/countdown.tsx",
           "type": "registry:component",
-          "target": "components/countdown.tsx"
+          "target": "components/ui/countdown.tsx"
         }
       ]
     }

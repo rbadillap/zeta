@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Countdown } from "@/components/countdown"
+import { Countdown } from "@/registry/new-york/ui/countdown"
 
 export default function Preview() {
   return (
