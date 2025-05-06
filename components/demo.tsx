@@ -60,7 +60,7 @@ export function Demo() {
 
             <div className="hidden md:flex items-center gap-2">
               <AddCommand />
-              <OpenInV0 url="https://zeta-registry.vercel.app/r/registry-nextjs.json" className="w-fit" />
+              <OpenInV0 url="https://zeta-registry.vercel.app/r/showcase.json" className="w-fit" />
             </div>
           </div>
           

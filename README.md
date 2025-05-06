@@ -108,11 +108,6 @@ Your registry will be available at [http://localhost:3000](http://localhost:3000
 
 ---
 
-## Author
-
-Created by [Ronny Badilla](https://x.com/rbadillap)  
-Contact: info@rbadillap.dev
-
 ## License
 
 [MIT License](LICENSE)
