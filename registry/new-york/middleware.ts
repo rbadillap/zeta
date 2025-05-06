@@ -3,6 +3,12 @@ import type { NextRequest } from "next/server"
 import { verifyToken } from "@/lib/shadcn/registry/utils"
 
 export async function middleware(request: NextRequest) {
+  // First, check if the path actually starts with /registry/
+  // This is a safety check in addition to the matcher
+  if (!request.nextUrl.pathname.startsWith("/registry/")) {
+    return NextResponse.next()
+  }
+  
   // Allow access to the license validation page without token
   if (request.nextUrl.pathname === '/registry/access/validate-license') {
     return NextResponse.next()
