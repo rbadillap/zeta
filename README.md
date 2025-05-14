@@ -6,86 +6,40 @@
 
 Zeta is an open source registry for [shadcn/ui](https://ui.shadcn.com/) components, designed for secure distribution of private or premium components. It integrates with [Polar.sh](https://docs.polar.sh/features/benefits/license-keys) for automated license key management and validation.
 
-> **Documentation is in progress.**   
-> For now, follow this guide and refer to [shadcn registry docs](https://ui.shadcn.com/docs/registry/getting-started) and [Polar license key docs](https://docs.polar.sh/features/benefits/license-keys) for details.
+---
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the [`/content/docs`](./content/docs/) directory:
+
+- [Getting Started](./content/docs/getting-started/)
+- [Integrations](./content/docs/integrations/)
+- [Examples](./content/docs/examples/)
+- [Guides](./content/docs/guides/)
+- [API Reference](./content/docs/api/)
+- [Configuration](./content/docs/configuration/)
+- [FAQ](./content/docs/faq.mdx)
+- [Troubleshooting](./content/docs/troubleshooting.mdx)
+- [Contributing](./content/docs/contributing.mdx)
+
+> **Tip:** If you are using the deployed app, documentation is also available at `/docs`.
 
 ---
 
 ## Quick Start
 
-### 1. Create a License Key
+For a full setup guide, see [Getting Started](./content/docs/getting-started/).
 
-To protect your components, you need a valid license key from Polar.sh.
-
-- [How to create a license key in Polar](https://docs.polar.sh/features/benefits/license-keys)
-
----
-
-### 2. Choose Your Setup
-
-#### **A. Install via shadcn CLI (recommended for new Next.js projects)**
-
-1. Start with a fresh Next.js app.
-2. Run:
-
-   ```bash
-   pnpm dlx shadcn@latest add https://zeta-registry.vercel.app/r/registry.json
-   ```
-
-This command copies the registry components into your project.
-
-#### **B. Use this repository as a template**
-
-```bash
-git clone https://github.com/rbadillap/zeta.git
-cd zeta
-pnpm install
-```
-
----
-
-### 3. Configure Environment Variables
-
-Copy `.env.example` to `.env` and fill in the required values:
-
-```env
-# Zeta registry (used for signing tokens)
-# https://nextjs.org/docs/app/guides/authentication#1-generating-a-secret-key
-REGISTRY_TOKEN_SECRET="your-random-secret"
-
-# Polar.sh integration
-POLAR_ORG_ID="your-polar-organization-id"
-POLAR_ACCESS_TOKEN="your-polar-access-token"
-POLAR_IS_SANDBOX="false" # set to "true" for Polar sandbox/testing
-```
-
-**Variable explanations:**
-
-- `REGISTRY_TOKEN_SECRET`: Secret key for signing and verifying registry tokens. Generate a strong random value. [Docs](https://nextjs.org/docs/app/guides/authentication#1-generating-a-secret-key)
-- `POLAR_ORG_ID`: Your Polar.sh organization ID. Find it in your Polar dashboard.
-- `POLAR_ACCESS_TOKEN`: API token for accessing Polar.sh endpoints.
-- `POLAR_IS_SANDBOX`: Set to `"true"` to use Polar's sandbox environment for testing.
-
----
-
-### 4. Registry Setup & Component Protection
-
-Zeta expects a `registry.json` file and at least one component to be present in your project.
-
-- Follow the [shadcn registry getting started guide](https://ui.shadcn.com/docs/registry/getting-started) to:
-  - Create your own `registry.json`
-  - Add your components (e.g., in `registry/new-york/your-component/`)
-  - Reference and protect components as needed
-
----
-
-### 5. Run the Registry Server
-
-```bash
-pnpm dev
-```
-
-Your registry will be available at [http://localhost:3000](http://localhost:3000).
+1. **Create a License Key**
+   - Use [Polar.sh](https://docs.polar.sh/features/benefits/license-keys) to generate a license key.
+2. **Set Up Your Project**
+   - You can use the shadcn CLI or clone this repository. See [Getting Started](./content/docs/getting-started/) for details.
+3. **Configure Environment Variables**
+   - Copy `.env.example` to `.env` and fill in the required values. See [Configuration](./content/docs/configuration/).
+4. **Add and Protect Components**
+   - Follow the [Component Registry Guide](./content/docs/examples/) to add and protect your components.
+5. **Run the Registry Server**
+   - Start the dev server with `pnpm dev`.
 
 ---
 

@@ -1,0 +1,77 @@
+---
+title: Custom Components
+description: Guide to creating custom components in Zeta Registry.
+icon: Puzzle
+---
+
+## Introduction
+
+This guide explains how to create and register a custom UI component in Zeta. It is intended for developers who want to add their own components to the registry, either for private or public use.
+
+## Prerequisites
+
+- Zeta project set up
+- Access to shadcn/ui
+- pnpm installed
+- Familiarity with React and TypeScript
+
+## Recommended Structure
+
+Place your custom components in the `registry` directory at the project root (referred to as `@registry`).
+Organize related files (component, styles, documentation) within the same directory for clarity.
+
+## Creating a Custom Component
+
+1. **Create the file**
+   - Example: `MyComponent.tsx` inside the appropriate namespace folder within `registry` (e.g., `registry/new-york/ui/MyComponent.tsx`).
+2. **Define the component**
+   - Use a functional React component with TypeScript.
+   - Example:
+
+```tsx
+import React from "react";
+
+interface MyComponentProps {
+  label: string;
+}
+
+export function MyComponent({ label }: MyComponentProps) {
+  return <div className="p-4 font-medium">{label}</div>;
+}
+```
+
+3. **Add props and logic**
+   - Define clear, typed props.
+   - Keep logic simple and reusable.
+4. **Apply styles**
+   - Use Tailwind CSS or shadcn/ui primitives for styling.
+5. **Document the component**
+   - Add a short comment or MDX file describing usage and props.
+
+## Registering the Component in Zeta
+
+Add your component to the `registry.json` file in your namespace within the `registry` directory. Follow the official schema. Example:
+
+```json
+{
+  "name": "my-component",
+  "type": "registry:component",
+  "title": "My Component",
+  "description": "A simple custom component.",
+  "author": "Your Name",
+  "dependencies": ["react"],
+  "files": ["ui/MyComponent.tsx"]
+}
+```
+
+## Testing and Validation
+
+- Import and use your component in an example page or test file.
+- Ensure it renders correctly and props work as expected.
+- Check that it appears in the registry and is accessible as intended.
+
+## Additional Notes
+
+- Do not use `shadcn build`. Zeta manages the build and distribution process.
+- For details on the registry schema, see [registry.json documentation](/docs/configuration/registry-json).
+- Protect premium components as needed using the middleware and license system.

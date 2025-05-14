@@ -1,9 +1,10 @@
+import Link from "next/link"
+import { PlusIcon, MailIcon, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import Logo from "@/components/logos"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { PlusIcon, MailIcon } from "lucide-react"
 import { Demo } from "@/components/demo"
 
 export default function Page() {
@@ -31,7 +32,7 @@ export default function Page() {
             Compatible with latest features of <a href="https://alpine-registry.vercel.app" target="_blank" rel="noopener noreferrer" className="underline"><Logo name="alpine" /></a>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
-            {/* <Button
+            <Button
               asChild
               size="lg"
               className="px-8 py-4 text-base font-semibold bg-primary text-primary-foreground border border-primary/70 shadow-inner shadow-primary/10 hover:bg-primary/90 focus:ring-2 focus:ring-primary/40 focus:outline-none w-full sm:w-auto"
@@ -39,7 +40,7 @@ export default function Page() {
               <Link href="/docs" className="flex items-center gap-2">
                 Get Started <ArrowRight className="w-4 h-4" />
               </Link>
-            </Button> */}
+            </Button>
             <Button
               asChild
               size="lg"

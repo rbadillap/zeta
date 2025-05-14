@@ -102,6 +102,8 @@ const logos = {
   ),
 };
 
+export const brands = Object.keys(logos);
+
 export default function Logo(props: React.SVGProps<SVGSVGElement>) {
   const { name, ...rest } = props;
   return logos[name as keyof typeof logos](rest);

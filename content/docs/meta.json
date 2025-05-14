@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "index",
+    "---Getting Started---",
+    "...getting-started",
+    "core",
+    "configuration",
+    "---Integrations---",
+    "...integrations",
+    "---Developer Guides---",
+    "api",
+    "guides",
+    "examples",
+    "faq",
+    "troubleshooting",
+    "contributing",
+    "changelog"
+  ]
+}
