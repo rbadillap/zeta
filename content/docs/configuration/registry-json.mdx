@@ -1,7 +1,89 @@
 ---
-title: Registry JSON
-description: Structure and usage of the registry.json file in Zeta Registry.
+title: registry.json
+description: Structure and usage of the registry.json file in Zeta, following the official shadcn/ui schema.
 icon: FileJson
 ---
 
-## Registry JSON
+## What is `registry.json`?
+
+The `registry.json` file is the heart of your component registry in Zeta. It defines the metadata, dependencies, and items (components, blocks, hooks, etc.) that make up your registry.
+
+<Callout title="Important">
+This file follows the [official shadcn/ui schema](https://ui.shadcn.com/schema/registry.json), ensuring compatibility and portability.
+</Callout>
+
+## General Structure
+
+```json lineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Zeta Registry",
+  "description": "Protect your blocks and components...",
+  "homepage": "https://zeta-registry.vercel.app",
+  "items": [ /* ... */ ]
+}
+```
+
+- **$schema**: URL to the official schema, enables validation and autocompletion.
+- **name**: Unique name for your registry.
+- **description**: Short description of your registry.
+- **homepage**: Main URL or demo.
+- **items**: Array of items, each following the [official item schema](https://ui.shadcn.com/schema/registry-item.json).
+
+## Items and Dependencies
+
+Each item can be a component, block, hook, etc.  
+The most important fields are:
+
+- **name**: Unique name for the item.
+- **type**: Type (`registry:block`, `registry:component`, etc.).
+- **title**: Human-readable title.
+- **description**: Short description.
+- **author**: Author of the item.
+- **dependencies**: NPM packages required for this item (**priority**).
+- **registryDependencies**: Other registry items or URLs of external registries.
+
+<Callout title="Tip">
+- Use `dependencies` to declare all required NPM packages (e.g., `shadcn`, `lucide-react`, `zod`, etc.).  
+- Use `registryDependencies` to reference shadcn/ui components or external blocks.
+</Callout>
+
+## Real Example
+
+```json
+{
+  "name": "registry-nextjs",
+  "type": "registry:block",
+  "title": "Zeta Registry",
+  "author": "Ronny Badilla - @rbadillap",
+  "dependencies": [
+    "shadcn",
+    "lucide-react",
+    "zod",
+    "@hookform/resolvers",
+    "react-hook-form",
+    "@polar-sh/sdk",
+    "jose",
+    "nanoid"
+  ],
+  "registryDependencies": [
+    "alert",
+    "button",
+    "card",
+    "form",
+    "input"
+  ],
+  "description": "This block contains all the necessary files and configurations to serve and manage a shadcn/ui component registry, including API protection, and more features.",
+  "files": [ /* ... */ ]
+}
+```
+
+- **dependencies**: All NPM packages required for the block to work properly.
+- **registryDependencies**: shadcn/ui components or blocks used internally by this block.
+
+## Best Practices
+
+- Always use the official schema for validation and compatibility.
+- Declare all dependencies explicitly.
+- Keep names and descriptions clear and unique.
+- Update dependencies regularly to avoid vulnerabilities.

@@ -3,5 +3,36 @@ title: Middleware
 description: Middleware options and customization in Zeta Registry.
 icon: Shuffle
 ---
+## What is Middleware?
 
-## Middleware
+Middleware in Next.js allows you to run code before a request is completed. It's ideal for authentication, access control, and request rewriting—making it a perfect fit for protecting registry components in Zeta.
+
+## Zeta Registry Middleware
+
+Zeta's middleware ensures that only users with a valid license token can access protected components in your registry. It works by intercepting requests to `/registry/*` routes and enforcing license validation.
+
+### How It Works
+
+- **Route Matching:** The middleware only runs for paths under `/registry/*`.
+- **Public Access:** The license validation page and API are always accessible.
+- **Token Requirement:** All other registry routes require a `?token=` query parameter.
+- **Validation:** If the token is missing or invalid, the user is redirected to the license validation page or receives a 401 error.
+
+### Middleware Code
+
+<Callout title="Important">This middleware code is automatically provided when you install Zeta using the shadcn add command (e.g., `pnpm dlx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json`). You do not need to create it from scratch—just review or customize as needed.</Callout>
+
+<include meta='title="middleware.ts"'>../../../registry/new-york/middleware.ts</include>
+
+### Customization
+
+You can adapt this middleware to:
+- Use different authentication methods (e.g., cookies, headers).
+- Protect additional routes.
+- Customize error handling or redirect logic.
+
+### Best Practices
+
+- Always validate tokens server-side.
+- Never expose sensitive logic or secrets to the client.
+- Keep your middleware logic simple and focused on access control.

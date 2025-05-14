@@ -1,7 +1,115 @@
 ---
 title: Quickstart
-description: This is a description
+description: Get started with Zeta, secure, protect, and distribute your shadcn/ui components.
 icon: Album
 ---
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
-## Installation
+## Getting Started
+
+Follow these steps to set up Zeta and protect your shadcn/ui components in a Next.js project.
+
+### 1. Create a Next.js App
+
+<Tabs groupId="create-app" persist items={["npm", "pnpm", "yarn", "bun"]} label="Create Next.js app with shadcn CLI">
+```bash tab="npm"
+npx shadcn@latest init -d
+```
+```bash tab="pnpm"
+pnpm dlx shadcn@latest init -d
+```
+```bash tab="yarn"
+yarn dlx shadcn@latest init -d
+```
+```bash tab="bun"
+bunx shadcn@latest init -d
+```
+</Tabs>
+
+- Select **Next.js** when prompted and provide a project name.
+- The `-d` flag uses default options for a faster setup.
+
+### 2. Change to Your Project Directory
+
+```bash
+cd <your-project-name>
+```
+
+### 3. Add the Zeta Registry
+
+<Tabs groupId="add-zeta" persist items={["npm", "pnpm", "yarn", "bun"]} label="Add Zeta registry">
+```bash tab="npm"
+npx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+```bash tab="pnpm"
+pnpm dlx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+```bash tab="yarn"
+yarn dlx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+```bash tab="bun"
+bunx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+</Tabs>
+
+### 4. Configure Environment Variables
+
+Copy the example env file and fill in your values:
+
+<Tabs groupId="env-copy" persist items={["Unix", "Windows"]} label="Copy .env.example to .env">
+```bash tab="Unix"
+cp .env.example .env
+```
+```sh tab="Windows"
+copy .env.example .env
+```
+</Tabs>
+
+Fill in the required values:
+
+| Variable                | Type   | Required | Description                                                                 |
+|-------------------------|--------|----------|-----------------------------------------------------------------------------|
+| REGISTRY_TOKEN_SECRET   | string | Yes      | Secret key for signing and verifying registry tokens. [Docs](https://nextjs.org/docs/app/guides/authentication#1-generating-a-secret-key) |
+| POLAR_ORG_ID            | string | Yes      | Your Polar.sh organization ID.                                              |
+| POLAR_ACCESS_TOKEN      | string | Yes      | API token for accessing Polar.sh endpoints.                                 |
+| POLAR_IS_SANDBOX        | bool   | No       | Set to `true` for sandbox/testing. Defaults to `false`.                     |
+
+See the [full environment variable reference](/docs/configuration/env) for details.
+
+### 5. Create a Protected Component
+
+- Create your component in `registry/new-york/<your-component>`.
+- Add a `registry.json` file describing your component.  
+  See the [shadcn registry-item.json documentation](https://ui.shadcn.com/docs/registry/registry-item-json) for schema and examples.
+
+### 6. Start the Development Server
+
+<Tabs groupId="dev-run" persist items={["npm", "pnpm", "yarn", "bun"]} label="Start the Development Server">
+```bash tab="npm"
+npm run dev
+```
+```bash tab="pnpm"
+pnpm dev
+```
+```bash tab="yarn"
+yarn dev
+```
+```bash tab="bun"
+bun run dev
+```
+</Tabs>
+
+### 7. Access Your Protected Component
+
+Visit:  
+```
+http://localhost:3000/registry/<your-component-name>
+```
+Your component is now protected and only accessible via the registry route.
+
+---
+
+<Callout title="Important">
+Do **not** use the `shadcn build` command (e.g. `pnpm dlx shadcn build`).  
+Zeta handles the build and serving process internally. Running `build` will generate a public `r` folder with JSON files per component, which is not compatible with Zeta's access control.
+</Callout>
