@@ -1,7 +1,140 @@
 ---
 title: Installation
-description: This is a description
+description: How to install and set up Zeta in your project.
 icon: Wrench
 ---
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
-## Installation
+## Introduction
+
+Learn how to install Zeta, the secure shadcn/ui component registry, in your Next.js project. This guide covers the basics to get you started quickly, with links to more detailed configuration topics.
+
+## Prerequisites
+
+- Node.js 18+
+- pnpm
+- A Next.js app (recommended)
+- Polar.sh account for license key management - [Create an account](https://polar.sh?utm_source=zeta)
+
+## Installation Methods
+
+### A. Using shadcn CLI (Recommended)
+
+<Tabs groupId="package-manager" persist items={["npm", "pnpm", "yarn", "bun"]} label="Install using shadcn">
+
+```bash tab="npm"
+npx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+
+```bash tab="pnpm"
+pnpm dlx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+
+```bash tab="yarn"
+yarn dlx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+
+```bash tab="bun"
+bunx shadcn@latest add https://zeta-registry.vercel.app/r/registry-nextjs.json
+```
+
+</Tabs>
+
+This will copy Zeta registry components into your project.
+
+### B. Cloning the Repository
+
+<Tabs groupId="clone-method" persist items={["npm", "pnpm", "yarn", "bun"]} label="Clone and install Next.js">
+
+```bash tab="npm"
+git clone https://github.com/rbadillap/zeta.git
+cd zeta
+npm install # this is a nextjs app
+```
+
+```bash tab="pnpm"
+git clone https://github.com/rbadillap/zeta.git
+cd zeta
+pnpm install
+```
+
+```bash tab="yarn"
+git clone https://github.com/rbadillap/zeta.git
+cd zeta
+yarn install
+```
+
+```bash tab="bun"
+git clone https://github.com/rbadillap/zeta.git
+cd zeta
+bun install
+```
+
+</Tabs>
+
+## Basic Configuration
+
+After installation, you need to configure your environment and registry files. For full details, see the [Configuration Guide](/docs/configuration/env).
+
+### 1. Environment Variables
+
+<Tabs groupId="env-copy" persist items={["Unix", "Windows"]} label="Copy .env.example to .env">
+
+```bash tab="Unix"
+cp .env.example .env
+```
+
+```sh tab="Windows"
+copy .env.example .env
+```
+
+</Tabs>
+
+- Fill in the required values. See [Environment Variables Reference](/docs/configuration/env) for details on each variable.
+
+### 2. Registry File
+
+- Ensure you have a `registry.json` file and at least one component in your registry directory.
+- For more information, see [Registry File Configuration](/docs/configuration/registry-json).
+
+### 3. Middleware (Optional)
+
+- To protect premium/private components, configure middleware for access control.
+- See [Middleware Configuration](/docs/configuration/middleware) for setup instructions.
+
+## First Run
+
+<Tabs groupId="dev-run" persist items={["npm", "pnpm", "yarn", "bun"]} label="Start the Development Server">
+
+```bash tab="npm"
+npm run dev
+```
+
+```bash tab="pnpm"
+pnpm dev
+```
+
+```bash tab="yarn"
+yarn dev
+```
+
+```bash tab="bun"
+bun run dev
+```
+
+</Tabs>
+
+Visit [http://localhost:3000](http://localhost:3000) to see your registry.
+
+## Next Steps
+
+- [Protecting Components](/docs/guides/protecting-components)
+- [Usage Examples](/docs/examples/showcae)
+- [Integrations](/docs/integrations)
+- [API Reference](/docs/api/endpoints)
+- [Configuration Guide](/docs/configuration/env)
+
+## Troubleshooting
+
+- See [Zeta Discussions](https://github.com/rbadillap/zeta/discussions) for help.
+- Double-check your environment variables and Polar.sh credentials if you encounter issues.
