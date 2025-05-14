@@ -5,3 +5,52 @@ icon: Lock
 ---
 
 ## Tokens & Auth
+
+Zeta uses **JSON Web Tokens (JWT)** to protect access to premium components and private routes within the registry. Tokens are generated and validated on the backend, ensuring that only authenticated or licensed users can access protected resources.
+
+### Token Generation
+
+Tokens are generated using the `generateToken` function in [`lib/shadcn/registry/utils.ts`](https://github.com/rbadillap/zeta/blob/main/lib/shadcn/registry/utils.ts). This function uses the [`jose`](https://github.com/panva/jose) and [`nanoid`](https://github.com/ai/nanoid) packages, and requires the `REGISTRY_TOKEN_SECRET` environment variable to sign the token.
+
+```ts
+import { generateToken } from "@/lib/shadcn/registry/utils"
+
+const token = await generateToken()
+```
+
+<Callout title="Important">
+- **Expiration:** Tokens are valid for 24 hours.
+- **Unique identifier:** Each token includes a JTI generated with `nanoid`.
+</Callout>
+
+### Token Validation
+
+Validation is performed with the `verifyToken` function, which checks the signature and expiration of the JWT.
+
+```ts
+import { verifyToken } from "@/lib/shadcn/registry/utils"
+
+const isValid = await verifyToken(token)
+```
+
+If the token is invalid or expired, access is denied.
+
+### Required Environment Variables
+
+See the [Environment Variables](/docs/configuration/env) section for a full reference and security tips.
+
+- `REGISTRY_TOKEN_SECRET`: Secret key for signing and verifying JWTs. **Required.**
+
+### Middleware Protection
+
+The middleware (`registry/new-york/middleware.ts`) intercepts all routes under `/registry` and requires a valid token in the query string (`?token=`), except for license validation routes.
+
+- If the token is missing or invalid, users are redirected to `/registry/access/validate-license`.
+- The endpoint `/registry/api/validate-license` allows POST requests without a token to facilitate initial license validation.
+
+### Best Practices
+
+- Never commit your secret keys or `.env` files to version control.
+- Always use HTTPS to transmit tokens.
+- Do not include sensitive user data in the JWT payload.
+- Store secrets securely using a secret manager or environment configuration.

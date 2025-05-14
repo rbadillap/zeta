@@ -4,4 +4,56 @@ description: API endpoints for Zeta Registry.
 icon: Network
 ---
 
-## Endpoints
+## API Overview
+
+Zeta exposes HTTP endpoints for license validation and access management of protected components. All endpoints are designed to work securely with JWT-based authentication and Polar.sh license integration.
+
+<Callout type="info">
+  For a full list of required environment variables and their configuration, see the <a href="/docs/configuration/env" target="_blank" rel="noopener noreferrer">Environment Variables documentation</a>.
+</Callout>
+
+### Endpoint Details
+
+#### `POST /registry/api/validate-license`
+
+Validates a Polar.sh license key and, if valid, returns a JWT access token.
+
+**Request Body:**
+
+```json
+{
+  "licenseKey": "string"
+}
+```
+
+**Successful Response:**
+
+```json
+{
+  "valid": true,
+  "token": "jwt-token-string"
+}
+```
+
+**Error Response:**
+
+```json
+{
+  "valid": false,
+  "error": "Invalid license key."
+}
+```
+
+- **Method:** POST only
+- **Authentication:** Not required for this endpoint
+- **Logic:**
+  - Uses the `validateLicenseKey` function to verify the license with Polar.sh.
+  - If the license is valid (`status: "granted"`), generates a JWT token using `generateToken`.
+  - If invalid, returns an error message.
+- **Environment Variables:** Requires `POLAR_ORG_ID`, `POLAR_ACCESS_TOKEN`, and `REGISTRY_TOKEN_SECRET`. See [Environment Variables](/docs/configuration/env) for details.
+
+### Security Considerations
+
+- All critical endpoints (except license validation) require a valid JWT token, enforced by middleware.
+- The middleware ensures only users with a valid token can access protected resources under `/registry`.
+- For more on token management, see [Tokens & Auth](/docs/api/tokens-auth).
