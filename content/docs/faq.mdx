@@ -3,5 +3,31 @@ title: FAQ
 description: Frequently asked questions about Zeta Registry.
 icon: HelpCircle
 ---
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 
-## FAQ
+<Accordions type="multiple">
+  <Accordion title="What is a shadcn registry?">
+    A registry is a source of components that can be installed directly via the shadcn CLI, enabling easy sharing and distribution.
+  </Accordion>
+  <Accordion title="How do I protect my components?">
+    By integrating with Polar.sh, you can issue and validate license keys, ensuring only authorized users can install your components.
+  </Accordion>
+  <Accordion title="What is Polar.sh and how does it integrate?">
+    Polar.sh provides license key management and validation. Zeta integrates with Polar.sh to automate license checks for premium/private components.
+  </Accordion>
+  <Accordion title="Can I use Zeta for open source projects?">
+    Absolutely! Zeta is open source and can be used for both public and private registries.
+  </Accordion>
+  <Accordion title="What integrations are planned?">
+    Integrations with Better Auth for authentication and Vercel for deployment are in the works.
+  </Accordion>
+  <Accordion title="How do I get an access key?">
+    Access keys are managed via Polar.sh. Check their <a href="https://docs.polar.sh/features/benefits/license-keys" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">documentation</a> for details.
+  </Accordion>
+  <Accordion title="Is Zeta associated with shadcn/ui or Polar.sh?">
+    No, Zeta is an independent project created by <a href="https://x.com/rbadillap" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Ronny Badilla</a>. It leverages Polar.sh for license key management. More integrations are planned in the future.
+  </Accordion>
+  <Accordion title="Why is this project called Zeta?">
+    Zeta is the eighth letter of the Greek... nah! it was the name randomly chosen by Vercel when I created the project :)
+  </Accordion>
+</Accordions>

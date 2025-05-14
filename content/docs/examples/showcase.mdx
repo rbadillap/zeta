@@ -5,3 +5,30 @@ icon: Sparkles
 ---
 
 ## Showcase
+
+This showcase demonstrates a real-world usage of Zeta, including both the user interface and the underlying code. You can view the live showcase and inspect the implementation details below.
+
+### Live Showcase
+
+You can open the project with Zeta pre-installed using v0.dev:
+
+[Open in v0.dev](https://v0.dev/chat/api/open?url=https://zeta-registry.vercel.app/r/showcase.json)
+
+<Callout title="Note">
+[v0.dev](https://v0.dev) does not handle middleware redirects correctly. For full functionality, deploy the app as described in the [Deployment Guide](/docs/guides/deployment).
+</Callout>
+
+### Code Reference
+
+The main showcase page is implemented in:
+
+<include meta='title="Showcase Page"'>../../../registry/new-york/examples/showcase/page.tsx</include>
+
+The countdown component used in the showcase:
+
+<include meta='title="Countdown Component"'>../../../registry/new-york/ui/countdown.tsx</include>
+
+### About Showcase vs. Example
+
+- The **showcase** demonstrates a complete, real-world usage of Zeta, including UI and code, and is referenced in the registry as a block (`showcase.json`).
+- The **example** directory may contain additional usage patterns or isolated code samples, but the showcase is the primary reference for a full implementation.

@@ -4,4 +4,27 @@ description: How to protect your components in Zeta Registry.
 icon: ShieldCheck
 ---
 
-## Protecting Components
+## Introduction
+
+This guide explains how to protect non-public (private or premium) components in Zeta. The process is similar to creating custom components, with additional considerations for access control and distribution.
+
+## Registering Protected Components
+
+- Protected components can be registered in a separate `registry.json` file within your `registry` directory, as long as the file follows the official schema. See the [registry.json documentation](/docs/configuration/registry-json) for details.
+- You may organize public and protected components in different namespaces or directories as needed.
+
+## Build and Distribution
+
+- **Public components:** You can use `shadcn build` to generate and distribute public components.
+- **Protected components:** For any non-public components, do not use `shadcn build`. Zeta manages the build and distribution process to ensure proper access control and license enforcement.
+
+## Access Control
+
+- Zeta uses middleware and license validation to restrict access to protected components. Ensure your middleware is configured as described in the [middleware guide](/docs/configuration/middleware).
+- Only users with a valid license or token will be able to access protected components.
+
+## Best Practices
+
+- Always follow the official schema for all `registry.json` files.
+- Keep public and protected components organized and clearly separated.
+- Refer to the [registry.json documentation](/docs/configuration/registry-json) for schema details and examples.

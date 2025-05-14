@@ -5,3 +5,79 @@ icon: Bug
 ---
 
 ## Troubleshooting
+
+This section covers common issues and solutions when working with Zeta Registry. If you encounter a problem not listed here, check the [FAQ](/docs/faq), [Installation Guide](/docs/getting-started/installation), or open a discussion on [GitHub](https://github.com/rbadillap/zeta/discussions).
+
+### 1. Installation & Setup
+
+**Problem:** _Zeta or dependencies fail to install._
+- **Solution:**
+  - Ensure you are using **Node.js 18+** and **pnpm** (recommended). Run `node -v` and `pnpm -v` to check.
+  - If you see errors with the shadcn CLI, make sure you use the correct command:
+    - `pnpm dlx shadcn@latest init` to initialize shadcn.
+    - `pnpm dlx shadcn@latest add <component>` or the Zeta registry URL to add components.
+  - Delete `node_modules` and `pnpm-lock.yaml` and reinstall if you encounter persistent dependency issues.
+
+**Problem:** _Environment variables are missing or not loaded._
+- **Solution:**
+  - Copy `.env.example` to `.env` and fill in all required values.
+  - Double-check `REGISTRY_TOKEN_SECRET`, `POLAR_ORG_ID`, and `POLAR_ACCESS_TOKEN` are set and correct.
+  - Never commit your `.env` file to version control.
+  - For details, see [Environment Variables](/docs/configuration/env).
+
+### 2. Registry & Component Issues
+
+**Problem:** _Components do not appear in the registry or fail to load._
+- **Solution:**
+  - Ensure your `registry.json` file follows the [official schema](https://ui.shadcn.com/schema/registry.json).
+  - All required fields (`name`, `type`, `title`, `dependencies`, etc.) must be present and valid.
+  - Declare all NPM dependencies in the `dependencies` array.
+  - For custom components, check that the file paths in `files` are correct and the files exist.
+  - See [registry.json documentation](/docs/configuration/registry-json) for examples.
+
+**Problem:** _shadcn build command breaks protected components._
+- **Solution:**
+  - **Do not use** `shadcn build` for protected components. Zeta manages build and serving internally to enforce access control.
+  - Only use `shadcn build` for public components if needed.
+
+### 3. License & Access Control
+
+**Problem:** _Access to protected components fails or always redirects to license validation._
+- **Solution:**
+  - Make sure the middleware is present and correctly configured in your registry namespace (see [middleware guide](/docs/configuration/middleware)).
+  - Access protected routes with a valid `?token=` query parameter.
+  - Check that your Polar.sh credentials are correct and the license key is valid.
+  - If using sandbox mode, set `POLAR_IS_SANDBOX=true` in your `.env` for testing.
+
+**Problem:** _License key validation fails with Polar.sh._
+- **Solution:**
+  - Confirm your `POLAR_ORG_ID` and `POLAR_ACCESS_TOKEN` are correct and have the right permissions (`license_keys:read`).
+  - Check the [Polar.sh documentation](https://docs.polar.sh/features/benefits/license-keys) for more info.
+
+### 4. Deployment
+
+**Problem:** _App fails to deploy or environment variables are missing in production._
+- **Solution:**
+  - Set all required environment variables in your deployment platform's dashboard (Vercel, Netlify, etc.).
+  - For Vercel, use the Environment Variables section in your project settings.
+  - For Netlify, set the build command to `pnpm build` and publish directory to `.next`.
+  - See [Deployment Guide](/docs/guides/deployment) for details.
+
+**Problem:** _Middleware or protected routes do not work on v0.dev or similar platforms._
+- **Solution:**
+  - Some platforms (like v0.dev) do not handle Next.js middleware or redirects correctly. For full functionality, deploy to Vercel or Netlify.
+
+### 5. Common Mistakes & Gotchas
+
+- Do **not** commit secrets or `.env` files to version control.
+- Always use the official schemas for `registry.json` and component registration.
+- Keep public and protected components organized and clearly separated.
+- Update dependencies regularly to avoid vulnerabilities.
+- For custom authentication or access control, adapt the middleware as needed.
+
+### 6. Getting More Help
+
+- [FAQ](/docs/faq) for quick answers.
+- [Installation Guide](/docs/getting-started/installation) and [Quickstart](/docs/getting-started/quickstart) for setup.
+- [GitHub Discussions](https://github.com/rbadillap/zeta/discussions) for community support.
+- Contact Ronny Badilla ([info@rbadillap.dev](mailto:info@rbadillap.dev)) for direct help or to report critical issues.

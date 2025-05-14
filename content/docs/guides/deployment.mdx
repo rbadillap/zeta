@@ -4,4 +4,36 @@ description: Deploying Zeta Registry to your preferred environment.
 icon: CloudUpload
 ---
 
-## Deployment
+## Introduction
+
+Zeta is a standard Next.js application. You can deploy it to any platform that supports Next.js. Official testing and support is provided for Vercel. Netlify is also supported, but may require additional configuration.
+
+## Deploying to Vercel (Recommended)
+
+1. Push your project to a Git repository (GitHub, GitLab, or Bitbucket).
+2. Go to [vercel.com](https://vercel.com/) and import your repository.
+3. Vercel will detect the Next.js app automatically. Use the default build settings unless you have custom requirements.
+4. Set the required environment variables in the Vercel dashboard (`REGISTRY_TOKEN_SECRET`, `POLAR_ORG_ID`, `POLAR_ACCESS_TOKEN`, etc.).
+5. Deploy the project.
+
+For more details, see the [Vercel Next.js documentation](https://vercel.com/docs/frameworks/nextjs).
+
+## Deploying to Netlify
+
+1. Push your project to a Git repository.
+2. Go to [netlify.com](https://netlify.com/) and create a new site from your repository.
+3. Set the build command to `pnpm build` (or `npm run build`, depending on your setup).
+4. Set the publish directory to `.next`.
+5. Set the required environment variables in the Netlify dashboard.
+6. Deploy the project.
+
+For more details, see the [Netlify Next.js documentation](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+
+## Other Platforms
+
+Zeta can be deployed to any environment that supports Next.js. Refer to the [official Next.js deployment documentation](https://nextjs.org/docs/deployment) for more options and advanced configuration.
+
+## Notes
+
+- Ensure all required environment variables are set before deploying.
+- For troubleshooting, refer to the [Installation Guide](/docs/getting-started/installation) and [Environment Variables](/docs/configuration/env).
