@@ -126,3 +126,9 @@
     text-rendering: optimizeLegibility;
   }
 }
+
+@layer utilities {
+  div[role="tablist"] span {
+    @apply whitespace-nowrap; 
+  }
+}
